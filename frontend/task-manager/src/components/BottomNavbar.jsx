@@ -1,0 +1,48 @@
+import "./BottomNavbar.css"
+import AddTask from "./AddTask";
+import { Link, useNavigation } from "react-router-dom";
+
+import {
+  House,
+  Calendar,
+  Plus,
+  ChartLine,
+  User,
+} from "phosphor-react";
+
+function BottomNavbar() {
+  return (
+    <div className="bottom-nav">
+
+      <div className="nav-item active">
+        <House size={22} weight="fill" />
+        <span>Home</span>
+      </div>
+
+      <div className="nav-item">
+        <Calendar size={22} />
+        <span>Calendar</span>
+      </div>
+
+      <button className="add-btn">
+        <Link to='/AddTask'>
+        <Plus size={28} weight="bold" />        
+        </Link>
+        
+      </button>
+
+      <div className="nav-item">
+        <ChartLine size={22} />
+        <span>Progress</span>
+      </div>
+
+      <div className="nav-item">
+        <User size={22} />
+        <span>Profile</span>
+      </div>
+
+    </div>
+  );
+}
+
+export default BottomNavbar;

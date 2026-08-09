@@ -1,0 +1,309 @@
+/* =========================================================
+   MOBILE-FIRST BASE STYLES (default = smallest screens)
+   Assumes the global reset + body background already exist
+   in HomeSection.css (shared across the app).
+   ========================================================= */
+
+/* Main Container */
+.login {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 12px;
+}
+
+/* Card */
+.login-card {
+    width: 100%;
+    max-width: 380px;
+
+    background: #fff;
+    border-radius: 16px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+.login-card h1 {
+    font-size: 24px;
+    line-height: 1.3;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+/* Paragraph */
+.login-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+}
+
+.login-card > p {
+    margin-bottom: 24px;
+}
+
+/* Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid #e0dcf0;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-family: inherit;
+    color: #222;
+
+    background: #faf9ff;
+
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6a35ff;
+    box-shadow: 0 0 0 3px rgba(106, 53, 255, 0.12);
+}
+
+/* Remember me / Forgot password row */
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: -4px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: #6a35ff;
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-size: 13px;
+    color: #6a35ff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+.login-btn {
+    width: 100%;
+    margin-top: 8px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #6a35ff;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #5728df;
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* Register link */
+.register-link {
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #6a35ff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   Small phones / very narrow screens (extra safety net)
+   ========================================================= */
+@media (max-width: 340px) {
+    .login-card {
+        max-width: 100%;
+        padding: 24px 14px;
+    }
+
+    .login-card h1 {
+        font-size: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* =========================================================
+   Large phones (≥ 480px)
+   ========================================================= */
+@media (min-width: 480px) {
+    .login {
+        padding: 15px;
+    }
+
+    .login-card {
+        max-width: 420px;
+        padding: 35px 26px;
+        border-radius: 18px;
+    }
+
+    .login-card h1 {
+        font-size: 28px;
+    }
+
+    .login-card p {
+        font-size: 16px;
+    }
+
+    .login-btn {
+        font-size: 17px;
+        padding: 15px;
+    }
+}
+
+/* =========================================================
+   Tablets (≥ 768px)
+   ========================================================= */
+@media (min-width: 768px) {
+    .login {
+        padding: 20px;
+    }
+
+    .login-card {
+        max-width: 460px;
+        padding: 45px 40px;
+        border-radius: 20px;
+    }
+
+    .login-card h1 {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .login-card > p {
+        font-size: 17px;
+        margin-bottom: 30px;
+    }
+
+    .login-form {
+        gap: 18px;
+    }
+
+    .form-group input {
+        padding: 13px 16px;
+        font-size: 15px;
+    }
+
+    .login-btn {
+        font-size: 18px;
+        padding: 16px;
+        margin-top: 10px;
+    }
+}
+
+/* =========================================================
+   Small laptops / desktop (≥ 992px)
+   Stays single-column and centered — login forms read best
+   narrow even on wide screens.
+   ========================================================= */
+@media (min-width: 992px) {
+    .login-card {
+        max-width: 480px;
+        padding: 55px 50px;
+    }
+
+    .login-card h1 {
+        font-size: 36px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   Large desktop (≥ 1440px)
+   ========================================================= */
+@media (min-width: 1440px) {
+    .login-card {
+        max-width: 520px;
+        padding: 60px 55px;
+    }
+
+    .login-card h1 {
+        font-size: 40px;
+    }
+}
