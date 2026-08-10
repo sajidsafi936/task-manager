@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterSection.css";
+import toast from "react-hot-toast";
 
 function RegisterSection() {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ function RegisterSection() {
         }
 
         try {
-            const response = await fetch("http://localhost:8000/user/register", {
+            const response = await fetch("http://localhost:5000/api/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -44,7 +45,7 @@ function RegisterSection() {
             const data = await response.json();
 
             if (response.ok) {
-                alert(data.message);
+                toast.success(data.message);
 
                 // Clear the form
                 setFormData({
@@ -57,7 +58,7 @@ function RegisterSection() {
                 // Go to login page
                 navigate("/login");
             } else {
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.error(error);

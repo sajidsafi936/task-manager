@@ -1,93 +1,167 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./AddTask.css"
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import HomeDashboard from './HomeDashboard';
 import { MdWork } from "react-icons/md";
-
+import toast from 'react-hot-toast';
 
 const AddTask = () => {
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    catagory: "Work",
+    proiority: "Medium",
+    dueDate: "",
+    dueTime: "",
+    repeat: "Never",
+    reminder: "5 min before",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch("http://localhost:5000/api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success(data.message);
+        navigate("/HomeDashboard");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Unable to connect to the server.");
+    }
+  };
+
   return (
     <>
       <div className="addTask-header">
-        <FaArrowLeft className='left-arrow' color='black'  onClick={() => navigate("/HomeDashboard")} />
+        <FaArrowLeft className='left-arrow' color='black' onClick={() => navigate("/HomeDashboard")} />
         <h4>Add new tasks</h4>
       </div>
-      <form action="" className='title-form'>
-        <label htmlFor="">Task Title</label>
-        <input type="text" name="TaskTitle" id="TaskTitle" placeholder='Task Title' />
+
+      <form onSubmit={handleSubmit}>
+        <div className='title-form'>
+          <label htmlFor="title">Task Title</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder='Task Title'
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className='description-form'>
+          <label htmlFor="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            placeholder='Add your description'
+            value={formData.description}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+
+        {/* task catagory || detail */}
+        <div className="task-detail">
+          <div className="custom-input">
+            <div className="catagory">
+              <h4>Catogory</h4>
+            </div>
+            <div className="catogory-box">
+              <MdWork size="2em" />
+              <h5>Work</h5>
+            </div>
+          </div>
+          <div className="proiority">
+            <h4>Proiority</h4>
+            <select name="proiority" value={formData.proiority} onChange={handleChange}>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="task-detail">
+          <div className="custom-input">
+            <div className="catagory">
+              <h4>Due Date</h4>
+            </div>
+            <div className="catogory-box">
+              <input
+                type="date"
+                name="dueDate"
+                value={formData.dueDate}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="proiority">
+            <h4>Due Time</h4>
+            <input
+              type="time"
+              name="dueTime"
+              value={formData.dueTime}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="task-detail">
+          <div className="custom-input">
+            <div className="catagory">
+              <h4>Repeat</h4>
+            </div>
+            <div className="catogory-box-select">
+              <select name="repeat" value={formData.repeat} onChange={handleChange}>
+                <option value="Never">Never</option>
+                <option value="Always">Always</option>
+                <option value="Once">Once</option>
+              </select>
+            </div>
+          </div>
+          <div className="proiority">
+            <h4>Reminder</h4>
+            <select name="reminder" value={formData.reminder} onChange={handleChange}>
+              <option value="5 min before">5 min before</option>
+              <option value="10 min before">10 min before</option>
+              <option value="15 min before">15 min before</option>
+              <option value="20 min before">20 min before</option>
+              <option value="25 min before">25 min before</option>
+              <option value="30 min before">30 min before</option>
+              <option value="1 hr before">1 hr before</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" className='createTask-btn'>Create Task</button>
       </form>
-
-      <form action="" className='description-form'>
-        <label htmlFor="">Description</label>
-        <textarea name="" id="" placeholder='Add your description'></textarea>
-      </form>
-
-      {/* task catagory || detail */}
-      <div className="task-detail">
-        <div className="custom-input">
-          <div className="catagory">
-            <h4>Catogory</h4>
-          </div>
-          <div className="catogory-box">
-            <MdWork size="2em" />
-          <h5>Work</h5>
-          </div>
-        </div>
-        <div className="proiority">
-          <h4>Proiority</h4>
-          <select name="" id="">
-            <option value="">High</option>
-            <option value="">Low</option>
-            <option value="">Medium</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="task-detail">
-        <div className="custom-input">
-          <div className="catagory">
-            <h4>Due Date</h4>
-          </div>
-          <div className="catogory-box">
-            <input type="date"></input>
-          </div>
-        </div>
-        <div className="proiority">
-          <h4>Due Time</h4>
-          <input type="time" name="" id="" />
-        </div>
-      </div>
-
-      <div className="task-detail">
-        <div className="custom-input">
-          <div className="catagory">
-            <h4>Repeat</h4>
-          </div>
-          <div className="catogory-box-select">
-            <select name="" id="">
-            <option value="">Never</option>
-            <option value="">Always</option>
-            <option value="">Once</option>
-          </select>
-          </div>
-        </div>
-        <div className="proiority">
-          <h4>Reminder</h4>
-          <select name="" id="">
-            <option value="">5 min before</option>
-            <option value="">10 min before</option>
-            <option value="">15 min before</option>
-            <option value="">20 min before</option>
-            <option value="">25 min before</option>
-            <option value="">30 min before</option>
-            <option value="">1 hr before</option>
-          </select>
-        </div>
-      </div>
-
-      <button className='createTask-btn'>Create Task</button>
     </>
   )
 }

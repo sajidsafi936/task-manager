@@ -1,0 +1,35 @@
+### Register
+POST http://localhost:5000/api/users/register
+Content-Type: application/json
+
+{
+  "name": "Sajid",
+  "email": "test@example.com",
+  "password": "test1234"
+}
+
+### Login
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "test1234"
+}
+
+### Create Task (paste token from login response below)
+POST http://localhost:5000/api/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzkzY2U2NjBlMTYxYjMzYTgzOTg5ZiIsImlhdCI6MTc4NjMzMDM3MiwiZXhwIjoxNzg2NDE2NzcyfQ.2FwFnFn1az9imjj2_8HdIR24JtZft5YgbT4tbSwI4Bw
+
+{
+  "title": "Test task",
+  "description": "Testing the API",
+  "catagory": "Work",
+  "proiority": "High",
+  "dueDate": "2026-08-15"
+}
+
+### Get all tasks
+GET http://localhost:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzkzY2U2NjBlMTYxYjMzYTgzOTg5ZiIsImlhdCI6MTc4NjMzMDM3MiwiZXhwIjoxNzg2NDE2NzcyfQ.2FwFnFn1az9imjj2_8HdIR24JtZft5YgbT4tbSwI4Bw

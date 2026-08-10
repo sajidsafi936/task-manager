@@ -19,6 +19,9 @@ body {
 
 /* =============== */
 
+.home-dashboard{
+    padding-bottom: 75px;
+}
 .header{
     width: 100%;
     height: 90px;

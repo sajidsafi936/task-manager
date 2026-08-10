@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 import "./LoginSection.css";
 
 function LoginSection() {
@@ -20,34 +21,37 @@ function LoginSection() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        try {
-            const response = await fetch("http://localhost:8000/user/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
+    try {
+        const response = await fetch("http://localhost:5000/api/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-            const data = await response.json();
+        const data = await response.json();
 
-            if (response.ok) {
-                alert(data.message);
+        if (response.ok) {
+            toast.success(data.message);
 
-                console.log("Logged in user:", data.user);
+            // save token and user for later authenticated requests
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
 
-                // Later we will navigate to the dashboard
-                navigate("/HomeDashboard");
-            } else {
-                alert(data.message);
-            }
-        } catch (error) {
-            console.error(error);
-            alert("Unable to connect to the server.");
+            console.log("Logged in user:", data.user);
+
+            navigate("/HomeDashboard");
+        } else {
+            toast.error(data.message);
         }
-    };
+    } catch (error) {
+        console.error(error);
+        alert("Unable to connect to the server.");
+    }
+};
 
     return (
         <div className="login">

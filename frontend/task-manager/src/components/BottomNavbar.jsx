@@ -1,6 +1,7 @@
 import "./BottomNavbar.css"
 import AddTask from "./AddTask";
 import { Link, useNavigation } from "react-router-dom";
+import ProfileScreen from "./ProfileScreen.jsx";
 
 import {
   House,
@@ -35,11 +36,12 @@ function BottomNavbar() {
         <ChartLine size={22} />
         <span>Progress</span>
       </div>
-
+      <Link to="/profile">
       <div className="nav-item">
         <User size={22} />
         <span>Profile</span>
       </div>
+      </Link>
 
     </div>
   );
