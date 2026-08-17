@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import "./AddTask.css"
+import React, { useState } from "react";
+import "./AddTask.css";
 import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { MdWork } from "react-icons/md";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const AddTask = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const AddTask = () => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        "https://valiant-reverence-production-f75a.up.railway.app/api/tasks",
+        `${import.meta.env.VITE_API_URL}/api/tasks`,
         {
           method: "POST",
           headers: {
@@ -47,13 +47,13 @@ const AddTask = () => {
       const data = await res.json();
 
       if (res.ok) {
-        toast.success(data.message);
+        toast.success(data.message || "Task created successfully!");
         navigate("/HomeDashboard");
       } else {
-        toast.error(data.message);
+        toast.error(data.message || "Failed to create task");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Create task error:", err);
       toast.error("Unable to connect to the server.");
     }
   };
@@ -62,42 +62,43 @@ const AddTask = () => {
     <>
       <div className="addTask-header">
         <FaArrowLeft
-          className='left-arrow'
-          color='black'
+          className="left-arrow"
+          color="black"
           onClick={() => navigate("/HomeDashboard")}
         />
+
         <h4>Add new tasks</h4>
       </div>
 
       <form onSubmit={handleSubmit}>
 
-        <div className='title-form'>
+        <div className="title-form">
           <label htmlFor="title">Task Title</label>
 
           <input
             type="text"
             name="title"
             id="title"
-            placeholder='Task Title'
+            placeholder="Task Title"
             value={formData.title}
             onChange={handleChange}
             required
           />
         </div>
 
-        <div className='description-form'>
+        <div className="description-form">
           <label htmlFor="description">Description</label>
 
           <textarea
             name="description"
             id="description"
-            placeholder='Add your description'
+            placeholder="Add your description"
             value={formData.description}
             onChange={handleChange}
           ></textarea>
         </div>
 
-        {/* task category || detail */}
+        {/* Task category */}
 
         <div className="task-detail">
 
@@ -131,6 +132,8 @@ const AddTask = () => {
           </div>
 
         </div>
+
+        {/* Due date and time */}
 
         <div className="task-detail">
 
@@ -167,6 +170,8 @@ const AddTask = () => {
           </div>
 
         </div>
+
+        {/* Repeat and reminder */}
 
         <div className="task-detail">
 
@@ -216,14 +221,14 @@ const AddTask = () => {
 
         <button
           type="submit"
-          className='createTask-btn'
+          className="createTask-btn"
         >
           Create Task
         </button>
 
       </form>
     </>
-  )
-}
+  );
+};
 
-export default AddTask
+export default AddTask;

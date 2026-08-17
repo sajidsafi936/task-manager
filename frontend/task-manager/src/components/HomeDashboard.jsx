@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import "./HomeDashboard.css";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
-import { SiGoogletasks } from 'react-icons/si';
-import { MdPendingActions } from "react-icons/md";
+import { SiGoogletasks } from "react-icons/si";
+import { MdPendingActions, MdDelete } from "react-icons/md";
 import { TbCalendarDue } from "react-icons/tb";
 import { PiGreaterThan } from "react-icons/pi";
 import { FiSearch } from "react-icons/fi";
-import BottomNavbar from "./BottomNavbar"
-import profile from "../assets/profile.png"
+import BottomNavbar from "./BottomNavbar";
+import profile from "../assets/profile.png";
 
 const HomeDashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const HomeDashboard = () => {
         const token = localStorage.getItem("token");
 
         const res = await fetch(
-          "https://valiant-reverence-production-f75a.up.railway.app/api/tasks",
+          `${import.meta.env.VITE_API_URL}/api/tasks`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -46,24 +47,25 @@ const HomeDashboard = () => {
     fetchTasks();
   }, []);
 
-  // Calculate stats from real data
+  // Calculate statistics
   const totalTasks = tasks.length;
 
   const completed = tasks.filter(
-    t => t.status === 'completed'
+    (t) => t.status === "completed"
   ).length;
 
   const pending = tasks.filter(
-    t => t.status === 'pending'
+    (t) => t.status === "pending"
   ).length;
 
   const overdue = tasks.filter(
-    t =>
-      t.status === 'pending' &&
+    (t) =>
+      t.status === "pending" &&
       t.dueDate &&
       new Date(t.dueDate) < new Date()
   ).length;
 
+  // Toggle task status
   const toggleTaskStatus = async (task) => {
     try {
       const token = localStorage.getItem("token");
@@ -74,7 +76,7 @@ const HomeDashboard = () => {
           : "completed";
 
       const res = await fetch(
-        `https://valiant-reverence-production-f75a.up.railway.app/api/tasks/${task._id}`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
         {
           method: "PUT",
           headers: {
@@ -82,7 +84,7 @@ const HomeDashboard = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            status: newStatus
+            status: newStatus,
           }),
         }
       );
@@ -90,9 +92,8 @@ const HomeDashboard = () => {
       const updatedTask = await res.json();
 
       if (res.ok) {
-        // Update local state so UI reflects the change immediately
-        setTasks(prevTasks =>
-          prevTasks.map(t =>
+        setTasks((prevTasks) =>
+          prevTasks.map((t) =>
             t._id === task._id
               ? updatedTask
               : t
@@ -106,12 +107,44 @@ const HomeDashboard = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  // Delete task
+  const deleteTask = async (taskId) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setTasks((prevTasks) =>
+          prevTasks.filter((task) => task._id !== taskId)
+        );
+      } else {
+        console.error(data.message);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <div className='home-dashboard'>
+    <div className="home-dashboard">
 
-      <div className='header'>
+      {/* Header */}
+      <div className="header">
 
         <div className="greeting">
           <p>Good Morning</p>
@@ -119,25 +152,28 @@ const HomeDashboard = () => {
         </div>
 
         <div className="notification-profile">
+
           <IoMdNotificationsOutline
-            size='2em'
+            size="2em"
             style={{
-              marginBottom: '4px',
-              marginRight: '16px'
+              marginBottom: "4px",
+              marginRight: "16px",
             }}
           />
 
           <img
-            className='header-img'
-            id='profile-img'
+            className="header-img"
+            id="profile-img"
             src={profile}
             alt="profile-img"
           />
+
         </div>
 
       </div>
 
-      <div className='search'>
+      {/* Search */}
+      <div className="search">
 
         <FiSearch className="search-icon" />
 
@@ -148,46 +184,47 @@ const HomeDashboard = () => {
 
       </div>
 
+      {/* Dashboard Summary */}
       <div className="dashboard-summary">
 
-        <div className="stat-card" id='total-tasks'>
+        <div className="stat-card" id="total-tasks">
 
-          <FaTasks size='2em' />
+          <FaTasks size="2em" />
 
-          <div className='stat-info'>
+          <div className="stat-info">
             <p>Total Tasks</p>
             <h3>{totalTasks}</h3>
           </div>
 
         </div>
 
-        <div className="stat-card" id='completed'>
+        <div className="stat-card" id="completed">
 
-          <SiGoogletasks size='2em' />
+          <SiGoogletasks size="2em" />
 
-          <div className='stat-info'>
+          <div className="stat-info">
             <p>Completed</p>
             <h3>{completed}</h3>
           </div>
 
         </div>
 
-        <div className="stat-card" id='pending'>
+        <div className="stat-card" id="pending">
 
-          <MdPendingActions size='2em' />
+          <MdPendingActions size="2em" />
 
-          <div className='stat-info'>
+          <div className="stat-info">
             <p>Pending</p>
             <h3>{pending}</h3>
           </div>
 
         </div>
 
-        <div className="stat-card" id='overdue'>
+        <div className="stat-card" id="overdue">
 
-          <TbCalendarDue size='2em' />
+          <TbCalendarDue size="2em" />
 
-          <div className='stat-info'>
+          <div className="stat-info">
             <p>Overdue</p>
             <h3>{overdue}</h3>
           </div>
@@ -196,6 +233,7 @@ const HomeDashboard = () => {
 
       </div>
 
+      {/* Tasks */}
       <div className="task-catagories">
 
         <div className="task-heading">
@@ -218,19 +256,21 @@ const HomeDashboard = () => {
             </p>
           )}
 
-          {tasks.map(task => (
+          {tasks.map((task) => (
 
             <div
               className="task-card"
               key={task._id}
             >
 
+              {/* Checkbox */}
               <input
                 type="checkbox"
-                checked={task.status === 'completed'}
+                checked={task.status === "completed"}
                 onChange={() => toggleTaskStatus(task)}
               />
 
+              {/* Task information */}
               <div className="task-info">
 
                 <h3>{task.title}</h3>
@@ -249,13 +289,28 @@ const HomeDashboard = () => {
 
               </div>
 
+              {/* Right side */}
               <div className="task-right">
 
-                <span
-                  className={`priority-${task.proiority?.toLowerCase()}`}
-                >
-                  • {task.proiority}
-                </span>
+                {task.status === "completed" ? (
+
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteTask(task._id)}
+                    title="Delete task"
+                  >
+                    <MdDelete />
+                  </button>
+
+                ) : (
+
+                  <span
+                    className={`priority-${task.proiority?.toLowerCase()}`}
+                  >
+                    • {task.proiority}
+                  </span>
+
+                )}
 
                 <span className="arrow">
                   <PiGreaterThan />
@@ -271,12 +326,13 @@ const HomeDashboard = () => {
 
       </div>
 
+      {/* Bottom Navigation */}
       <footer>
         <BottomNavbar />
       </footer>
 
     </div>
-  )
-}
+  );
+};
 
 export default HomeDashboard;

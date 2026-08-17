@@ -31,7 +31,7 @@ function RegisterSection() {
 
         try {
             const response = await fetch(
-                "https://valiant-reverence-production-f75a.up.railway.app/api/users/register",
+                `${import.meta.env.VITE_API_URL}/api/users/register`,
                 {
                     method: "POST",
                     headers: {
@@ -50,7 +50,6 @@ function RegisterSection() {
             if (response.ok) {
                 toast.success(data.message || "Registration successful!");
 
-                // Clear the form
                 setFormData({
                     name: "",
                     email: "",
@@ -58,7 +57,6 @@ function RegisterSection() {
                     confirmPassword: "",
                 });
 
-                // Go to login page
                 navigate("/login");
             } else {
                 toast.error(data.message || "Registration failed");

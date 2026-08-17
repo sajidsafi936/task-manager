@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./ProfileScreen.css";
 import { MdCameraAlt } from "react-icons/md";
 import { PiGreaterThan } from "react-icons/pi";
@@ -27,7 +27,7 @@ const ProfileScreen = () => {
         const token = localStorage.getItem("token");
 
         const res = await fetch(
-          "https://valiant-reverence-production-f75a.up.railway.app/api/tasks",
+          `${import.meta.env.VITE_API_URL}/api/tasks`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ const ProfileScreen = () => {
   const totalTasks = tasks.length;
 
   const completed = tasks.filter(
-    t => t.status === 'completed'
+    (t) => t.status === "completed"
   ).length;
 
   const handleLogout = () => {
@@ -69,22 +69,22 @@ const ProfileScreen = () => {
     {
       icon: <User size={20} />,
       label: "Edit Profile",
-      onClick: () => navigate("/edit-profile")
+      onClick: () => navigate("/edit-profile"),
     },
     {
       icon: <Lock size={20} />,
       label: "Change Password",
-      onClick: () => navigate("/change-password")
+      onClick: () => navigate("/change-password"),
     },
     {
       icon: <Gear size={20} />,
       label: "My Preferences",
-      onClick: () => navigate("/preferences")
+      onClick: () => navigate("/preferences"),
     },
     {
       icon: <Question size={20} />,
       label: "Help & Support",
-      onClick: () => navigate("/help")
+      onClick: () => navigate("/help"),
     },
   ];
 

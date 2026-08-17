@@ -25,7 +25,7 @@ function LoginSection() {
 
         try {
             const response = await fetch(
-                "https://valiant-reverence-production-f75a.up.railway.app/api/users/login",
+                `${import.meta.env.VITE_API_URL}/api/users/login`,
                 {
                     method: "POST",
                     headers: {
@@ -40,7 +40,7 @@ function LoginSection() {
             if (response.ok) {
                 toast.success(data.message || "Login successful!");
 
-                // Save token and user for later authenticated requests
+                // Save token and user for authenticated requests
                 localStorage.setItem("token", data.token);
                 localStorage.setItem(
                     "user",
