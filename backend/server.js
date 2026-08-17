@@ -1,33 +1,27 @@
-require('dotenv').config();
-const express = require("express");
-const userRoutes = require("../backend/routers/user");
-const mongoose = require("mongoose");
-const { type } = require("node:os");
-const {connectMongoDb} = require("./connection")
-const router = express.Router();
-const path = require("path");
-const cors = require("cors");
-const taskRoutes = require("./routers/taskRoutes");
+require("dotenv").config();
 
-//connection
-connectMongoDb("mongodb://127.0.0.1:27017/task-manager");
+const express = require("express");
+const cors = require("cors");
+
+const userRoutes = require("./routers/user");
+const taskRoutes = require("./routers/taskRoutes");
+const { connectMongoDb } = require("./connection");
 
 const app = express();
-app.use(cors())
 
-
-//middleware
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
-
-
-//router
+// Routes
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 
+// MongoDB connection
+connectMongoDb(process.env.MONGO_URI);
 
+const PORT = process.env.PORT || 5000;
 
-
-app.listen(5000, (req, res)=> console.log("server started"));
-
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});
