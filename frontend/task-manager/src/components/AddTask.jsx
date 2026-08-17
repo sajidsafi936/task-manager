@@ -32,14 +32,17 @@ const AddTask = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/api/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://valiant-reverence-production-f75a.up.railway.app/api/tasks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await res.json();
 
@@ -51,20 +54,26 @@ const AddTask = () => {
       }
     } catch (err) {
       console.error(err);
-      alert("Unable to connect to the server.");
+      toast.error("Unable to connect to the server.");
     }
   };
 
   return (
     <>
       <div className="addTask-header">
-        <FaArrowLeft className='left-arrow' color='black' onClick={() => navigate("/HomeDashboard")} />
+        <FaArrowLeft
+          className='left-arrow'
+          color='black'
+          onClick={() => navigate("/HomeDashboard")}
+        />
         <h4>Add new tasks</h4>
       </div>
 
       <form onSubmit={handleSubmit}>
+
         <div className='title-form'>
           <label htmlFor="title">Task Title</label>
+
           <input
             type="text"
             name="title"
@@ -78,6 +87,7 @@ const AddTask = () => {
 
         <div className='description-form'>
           <label htmlFor="description">Description</label>
+
           <textarea
             name="description"
             id="description"
@@ -87,68 +97,110 @@ const AddTask = () => {
           ></textarea>
         </div>
 
-        {/* task catagory || detail */}
+        {/* task category || detail */}
+
         <div className="task-detail">
+
           <div className="custom-input">
+
             <div className="catagory">
               <h4>Catogory</h4>
             </div>
+
             <div className="catogory-box">
               <MdWork size="2em" />
               <h5>Work</h5>
             </div>
+
           </div>
+
           <div className="proiority">
+
             <h4>Proiority</h4>
-            <select name="proiority" value={formData.proiority} onChange={handleChange}>
+
+            <select
+              name="proiority"
+              value={formData.proiority}
+              onChange={handleChange}
+            >
               <option value="High">High</option>
               <option value="Medium">Medium</option>
               <option value="Low">Low</option>
             </select>
+
           </div>
+
         </div>
 
         <div className="task-detail">
+
           <div className="custom-input">
+
             <div className="catagory">
               <h4>Due Date</h4>
             </div>
+
             <div className="catogory-box">
+
               <input
                 type="date"
                 name="dueDate"
                 value={formData.dueDate}
                 onChange={handleChange}
               />
+
             </div>
+
           </div>
+
           <div className="proiority">
+
             <h4>Due Time</h4>
+
             <input
               type="time"
               name="dueTime"
               value={formData.dueTime}
               onChange={handleChange}
             />
+
           </div>
+
         </div>
 
         <div className="task-detail">
+
           <div className="custom-input">
+
             <div className="catagory">
               <h4>Repeat</h4>
             </div>
+
             <div className="catogory-box-select">
-              <select name="repeat" value={formData.repeat} onChange={handleChange}>
+
+              <select
+                name="repeat"
+                value={formData.repeat}
+                onChange={handleChange}
+              >
                 <option value="Never">Never</option>
                 <option value="Always">Always</option>
                 <option value="Once">Once</option>
               </select>
+
             </div>
+
           </div>
+
           <div className="proiority">
+
             <h4>Reminder</h4>
-            <select name="reminder" value={formData.reminder} onChange={handleChange}>
+
+            <select
+              name="reminder"
+              value={formData.reminder}
+              onChange={handleChange}
+            >
               <option value="5 min before">5 min before</option>
               <option value="10 min before">10 min before</option>
               <option value="15 min before">15 min before</option>
@@ -157,10 +209,18 @@ const AddTask = () => {
               <option value="30 min before">30 min before</option>
               <option value="1 hr before">1 hr before</option>
             </select>
+
           </div>
+
         </div>
 
-        <button type="submit" className='createTask-btn'>Create Task</button>
+        <button
+          type="submit"
+          className='createTask-btn'
+        >
+          Create Task
+        </button>
+
       </form>
     </>
   )

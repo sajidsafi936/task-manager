@@ -25,27 +25,30 @@ function RegisterSection() {
 
         // Check if passwords match
         if (formData.password !== formData.confirmPassword) {
-            alert("confirm Passwords do not match with passwords");
+            toast.error("Passwords do not match");
             return;
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/users/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    password: formData.password,
-                }),
-            });
+            const response = await fetch(
+                "https://valiant-reverence-production-f75a.up.railway.app/api/users/register",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        password: formData.password,
+                    }),
+                }
+            );
 
             const data = await response.json();
 
             if (response.ok) {
-                toast.success(data.message);
+                toast.success(data.message || "Registration successful!");
 
                 // Clear the form
                 setFormData({
@@ -58,11 +61,11 @@ function RegisterSection() {
                 // Go to login page
                 navigate("/login");
             } else {
-                toast.error(data.message);
+                toast.error(data.message || "Registration failed");
             }
         } catch (error) {
-            console.error(error);
-            alert("Unable to connect to the server.");
+            console.error("Registration error:", error);
+            toast.error("Unable to connect to the server.");
         }
     };
 
