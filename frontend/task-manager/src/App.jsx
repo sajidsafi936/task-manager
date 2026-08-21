@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeDashboard from "./components/HomeDashboard";
 import AddTask from "./components/AddTask";
 import ProfileScreen from "./components/ProfileScreen";
+import EditProfile from "./components/EditProfile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/homedashboard" element={< HomeDashboard/>} />
         <Route path="/AddTask" element={< AddTask/>} />
         <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
       </Routes>
     </>
   );

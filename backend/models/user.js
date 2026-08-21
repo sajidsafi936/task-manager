@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
+
         email: {
             type: String,
             required: true,
@@ -15,16 +16,18 @@ const userSchema = new mongoose.Schema(
             lowercase: true,
             trim: true,
         },
+
         password: {
             type: String,
             trim: true,
-        }
+        },
+
+        profilePicture: {
+            type: String,
+            default: "",
+        },
     },
     {
         timestamps: true,
     }
 );
-
-const User = mongoose.model("user", userSchema);  
-
-module.exports = User;
