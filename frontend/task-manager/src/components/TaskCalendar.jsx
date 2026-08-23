@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./TaskCalendar.css";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
+import BottomNavbar from "./BottomNavbar";
 
 const TaskCalendar = () => {
   const [date, setDate] = useState(new Date());
@@ -103,7 +104,7 @@ const TaskCalendar = () => {
         />
       </div>
 
-      <h3>Tasks</h3>
+      <h4>Tasks</h4>
 
       <div className="filterTasks-Display">
         {loading ? (
@@ -130,6 +131,7 @@ const TaskCalendar = () => {
           <p>No tasks scheduled for this date.</p>
         )}
       </div>
+      <BottomNavbar/>
     </>
   );
 };
