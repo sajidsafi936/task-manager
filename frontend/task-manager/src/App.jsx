@@ -8,6 +8,7 @@ import HomeDashboard from "./components/HomeDashboard";
 import AddTask from "./components/AddTask";
 import ProfileScreen from "./components/ProfileScreen";
 import EditProfile from "./components/EditProfile";
+import TaskCalendar from "./components/TaskCalendar"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/AddTask" element={< AddTask/>} />
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/taskCalendar" element={<TaskCalendar />} />
       </Routes>
     </>
   );

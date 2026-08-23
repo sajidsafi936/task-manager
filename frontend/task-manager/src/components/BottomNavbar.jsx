@@ -2,6 +2,7 @@ import "./BottomNavbar.css"
 import AddTask from "./AddTask";
 import { Link, useNavigation } from "react-router-dom";
 import ProfileScreen from "./ProfileScreen.jsx";
+import TaskCalendar from "./TaskCalendar.jsx";
 
 import {
   House,
@@ -20,10 +21,12 @@ function BottomNavbar() {
         <span>Home</span>
       </div>
 
-      <div className="nav-item">
+      <Link to='/TaskCalendar'>
+        <div className="nav-item">
         <Calendar size={22} />
         <span>Calendar</span>
       </div>
+      </Link>
 
       <button className="add-btn">
         <Link to='/AddTask'>
