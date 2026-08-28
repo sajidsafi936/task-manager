@@ -1,9 +1,10 @@
 import "./BottomNavbar.css"
 import AddTask from "./AddTask";
 import { Link, useNavigation } from "react-router-dom";
-import ProfileScreen from "./ProfileScreen.jsx";
-import TaskCalendar from "./TaskCalendar.jsx";
-import HomeDashboard from "./HomeDashboard.jsx";
+import ProfileScreen from "../pages/ProfileScreen.jsx";
+import TaskCalendar from "../pages/TaskCalendar.jsx";
+import HomeDashboard from "../pages/HomeDashboard.jsx";
+import Progress from "../pages/Progress.jsx";
 
 import {
   House,
@@ -38,10 +39,13 @@ function BottomNavbar() {
         
       </button>
 
-      <div className="nav-item">
+      <Link to="/Progress">
+        <div className="nav-item">
         <ChartLine size={22} />
         <span>Progress</span>
-      </div>
+        </div>      
+      </Link>
+      
       <Link to="/profile">
       <div className="nav-item">
         <User size={22} />

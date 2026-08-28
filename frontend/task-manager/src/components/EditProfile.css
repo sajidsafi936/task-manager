@@ -1,128 +1,525 @@
+/* ==========================================================
+   EDIT PROFILE
+   MOBILE — DEFAULT
+========================================================== */
+
 .edit-profile-container {
-  min-height: 100vh;
-  padding: 30px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f7f8fa;
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f7f8fa;
+
+    overflow-x: hidden;
 }
 
 .edit-profile-card {
-  width: 100%;
-  max-width: 450px;
-  background: white;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+
+    background: white;
+
+    padding: 30px 20px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
 }
 
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
 .edit-profile-header {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+
+    margin-bottom: 30px;
 }
 
 .edit-profile-header h2 {
-  margin: 0;
-  font-size: 25px;
+    margin: 0;
+
+    font-size: 25px;
+    line-height: 1.3;
 }
 
 .edit-profile-header p {
-  margin-top: 8px;
-  color: #777;
+    margin-top: 8px;
+
+    color: #777;
+
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-/* Profile Picture */
+
+/* ==========================================================
+   PROFILE PICTURE
+========================================================== */
 
 .edit-picture-section {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+
+    margin-bottom: 30px;
 }
 
 .edit-picture-wrapper {
-  position: relative;
-  width: 110px;
-  height: 110px;
-  margin: auto;
+    position: relative;
+
+    width: 110px;
+    height: 110px;
+
+    margin: auto;
 }
 
 .edit-profile-picture {
-  width: 110px;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #eee;
+    width: 110px;
+    height: 110px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #eee;
 }
 
 .camera-button {
-  position: absolute;
-  right: 0;
-  bottom: 3px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: #222;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    position: absolute;
+
+    right: 0;
+    bottom: 3px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #222;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.camera-button:hover {
+    transform: scale(1.05);
+}
+
+.camera-button:active {
+    transform: scale(0.95);
 }
 
 .edit-picture-section p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #777;
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #777;
 }
 
-/* Inputs */
+
+/* ==========================================================
+   INPUTS
+========================================================== */
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
 }
 
 .form-group label {
-  margin-bottom: 8px;
-  font-weight: 600;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #333;
 }
 
 .form-group input {
-  padding: 13px 14px;
-  border: 1px solid #ddd;
-  border-radius: 9px;
-  outline: none;
-  font-size: 15px;
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition: 0.2s ease;
 }
 
 .form-group input:focus {
-  border-color: #555;
+    border-color: #555;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
 }
 
-/* Buttons */
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
 
 .edit-profile-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 25px;
+    width: 100%;
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 25px;
 }
 
 .edit-profile-buttons button {
-  flex: 1;
-  padding: 13px;
-  border-radius: 9px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 .cancel-btn {
-  background: white;
-  border: 1px solid #ddd;
+    background: white;
+
+    border: 1px solid #ddd;
+
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #f7f7f7;
 }
 
 .save-btn {
-  background: #222;
-  color: white;
-  border: none;
+    background: #222;
+
+    color: white;
+
+    border: none;
+}
+
+.save-btn:hover {
+    background: #333;
+}
+
+.edit-profile-buttons button:active {
+    transform: scale(0.98);
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   ≤ 340px
+========================================================== */
+
+@media (max-width: 340px) {
+
+    .edit-profile-container {
+        padding: 20px 12px;
+    }
+
+    .edit-profile-card {
+        padding: 24px 16px;
+
+        border-radius: 15px;
+    }
+
+    .edit-profile-header {
+        margin-bottom: 24px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 22px;
+    }
+
+    .edit-profile-header p {
+        font-size: 13px;
+    }
+
+    .edit-picture-section {
+        margin-bottom: 24px;
+    }
+
+    .edit-picture-wrapper {
+        width: 95px;
+        height: 95px;
+    }
+
+    .edit-profile-picture {
+        width: 95px;
+        height: 95px;
+    }
+
+    .camera-button {
+        width: 31px;
+        height: 31px;
+    }
+
+    .edit-picture-section p {
+        font-size: 13px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group input {
+        padding: 12px;
+
+        font-size: 14px;
+    }
+
+    .edit-profile-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .edit-profile-buttons button {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================
+   LARGE PHONES
+   ≥ 480px
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .edit-profile-container {
+        padding: 35px 25px;
+    }
+
+    .edit-profile-card {
+        padding: 35px 30px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 27px;
+    }
+
+    .edit-profile-header p {
+        font-size: 15px;
+    }
+
+    .edit-picture-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+
+    .edit-profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .camera-button {
+        width: 37px;
+        height: 37px;
+    }
+
+    .form-group input {
+        padding: 14px;
+
+        font-size: 15px;
+    }
+
+    .edit-profile-buttons button {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+
+/* ==========================================================
+   TABLETS
+   ≥ 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .edit-profile-container {
+        padding: 40px 30px;
+    }
+
+    .edit-profile-card {
+        max-width: 500px;
+
+        padding: 40px;
+        border-radius: 20px;
+    }
+
+    .edit-profile-header {
+        margin-bottom: 35px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 30px;
+    }
+
+    .edit-profile-header p {
+        font-size: 16px;
+    }
+
+    .edit-picture-section {
+        margin-bottom: 35px;
+    }
+
+    .edit-picture-wrapper {
+        width: 125px;
+        height: 125px;
+    }
+
+    .edit-profile-picture {
+        width: 125px;
+        height: 125px;
+    }
+
+    .camera-button {
+        width: 39px;
+        height: 39px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group label {
+        font-size: 15px;
+    }
+
+    .form-group input {
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+    .edit-profile-buttons {
+        gap: 15px;
+
+        margin-top: 30px;
+    }
+
+    .edit-profile-buttons button {
+        padding: 15px;
+
+        font-size: 16px;
+    }
+}
+
+
+/* ==========================================================
+   LAPTOP
+   ≥ 992px
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .edit-profile-container {
+        padding: 50px 40px;
+    }
+
+    .edit-profile-card {
+        max-width: 520px;
+
+        padding: 45px;
+
+        border-radius: 22px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 32px;
+    }
+
+    .edit-profile-header p {
+        font-size: 16px;
+    }
+
+    .edit-picture-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+
+    .edit-profile-picture {
+        width: 130px;
+        height: 130px;
+    }
+
+    .camera-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ≥ 1200px
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .edit-profile-container {
+        padding: 60px 50px;
+    }
+
+    .edit-profile-card {
+        max-width: 540px;
+
+        padding: 50px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 34px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ≥ 1440px
+========================================================== */
+
+@media (min-width: 1440px) {
+
+    .edit-profile-card {
+        max-width: 560px;
+
+        padding: 55px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 36px;
+    }
 }

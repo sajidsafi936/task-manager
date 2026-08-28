@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./TaskCalendar.css";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import BottomNavbar from "./BottomNavbar";
+import BottomNavbar from "../components/BottomNavbar";
 
 const TaskCalendar = () => {
   const [date, setDate] = useState(new Date());

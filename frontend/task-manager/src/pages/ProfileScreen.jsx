@@ -10,9 +10,9 @@ import {
   SignOut,
 } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
-import BottomNavbar from "./BottomNavbar";
+import BottomNavbar from "../components/BottomNavbar";
 import profile from "../assets/profile.png";
-import EditProfile from "./EditProfile";
+import EditProfile from "../components/EditProfile";
 
 const ProfileScreen = () => {
   const navigate = useNavigate();

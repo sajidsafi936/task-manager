@@ -7,7 +7,7 @@ import { MdPendingActions, MdDelete } from "react-icons/md";
 import { TbCalendarDue } from "react-icons/tb";
 import { PiGreaterThan } from "react-icons/pi";
 import { FiSearch } from "react-icons/fi";
-import BottomNavbar from "./BottomNavbar";
+import BottomNavbar from "../components/BottomNavbar";
 import profile from "../assets/profile.png";
 
 const HomeDashboard = () => {

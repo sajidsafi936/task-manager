@@ -1,5 +1,11 @@
-.bottom-nav{
+/* ==========================================================
+   BOTTOM NAVIGATION
+   MOBILE — DEFAULT
+========================================================== */
+
+.bottom-nav {
     position: fixed;
+
     bottom: 0;
     left: 0;
 
@@ -15,31 +21,41 @@
     border-top: 1px solid #ececec;
 
     z-index: 100;
+
+    padding: 0 8px;
 }
 
-.nav-item{
+.nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+    min-width: 50px;
 
     color: #8E8E93;
+
     font-size: 11px;
     gap: 4px;
 
     cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
-.nav-item svg{
+.nav-item svg {
     font-size: 22px;
 }
 
-.nav-item.active{
+.nav-item.active {
     color: #5B4CF0;
 }
 
-.add-btn{
+.add-btn {
     width: 60px;
     height: 60px;
+
+    flex-shrink: 0;
 
     border: none;
     border-radius: 50%;
@@ -55,9 +71,177 @@
 
     margin-top: -35px;
 
-    box-shadow: 0 8px 20px rgba(91,76,240,.35);
+    box-shadow: 0 8px 20px rgba(91, 76, 240, 0.35);
+
+    transition: 0.2s ease;
 }
 
-.add-btn:hover{
+.add-btn:hover {
     transform: scale(1.05);
+}
+
+.add-btn:active {
+    transform: scale(0.95);
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   ≤ 340px
+========================================================== */
+
+@media (max-width: 340px) {
+
+    .bottom-nav {
+        height: 70px;
+
+        padding: 0 4px;
+    }
+
+    .nav-item {
+        min-width: 44px;
+
+        font-size: 10px;
+        gap: 3px;
+    }
+
+    .nav-item svg {
+        font-size: 20px;
+    }
+
+    .add-btn {
+        width: 54px;
+        height: 54px;
+
+        margin-top: -30px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE PHONES
+   ≥ 480px
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .bottom-nav {
+        height: 80px;
+
+        padding: 0 20px;
+    }
+
+    .nav-item {
+        min-width: 60px;
+
+        font-size: 12px;
+        gap: 5px;
+    }
+
+    .nav-item svg {
+        font-size: 23px;
+    }
+
+    .add-btn {
+        width: 64px;
+        height: 64px;
+
+        margin-top: -36px;
+    }
+}
+
+
+/* ==========================================================
+   TABLETS
+   ≥ 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .bottom-nav {
+        height: 80px;
+
+        padding: 0 60px;
+    }
+
+    .nav-item {
+        min-width: 70px;
+
+        font-size: 12px;
+    }
+
+    .nav-item svg {
+        font-size: 24px;
+    }
+
+    .add-btn {
+        width: 66px;
+        height: 66px;
+
+        margin-top: -38px;
+    }
+}
+
+
+/* ==========================================================
+   LAPTOP
+   ≥ 992px
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .bottom-nav {
+        height: 82px;
+
+        padding: 0;
+    }
+
+    .nav-item {
+        min-width: 80px;
+
+        font-size: 13px;
+    }
+
+    .nav-item svg {
+        font-size: 25px;
+    }
+
+    .add-btn {
+        width: 68px;
+        height: 68px;
+
+        margin-top: -40px;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ≥ 1200px
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .bottom-nav {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .nav-item {
+        min-width: 85px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ≥ 1440px
+========================================================== */
+
+@media (min-width: 1440px) {
+
+    .bottom-nav {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
 }

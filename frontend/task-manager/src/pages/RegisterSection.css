@@ -1,7 +1,6 @@
 /* =========================================================
-   MOBILE-FIRST BASE STYLES (default = smallest screens)
-   Assumes the global reset + body background already exist
-   in HomeSection.css (shared across the app).
+   MOBILE-FIRST BASE STYLES
+   Default = smallest screens
    ========================================================= */
 
 /* Main Container */
@@ -143,24 +142,50 @@
     text-decoration: underline;
 }
 
+
 /* =========================================================
-   Small phones / very narrow screens (extra safety net)
+   VERY SMALL PHONES
+   ≤ 340px
    ========================================================= */
+
 @media (max-width: 340px) {
+
+    .register {
+        padding: 8px;
+    }
+
     .register-card {
         max-width: 100%;
         padding: 24px 14px;
+        border-radius: 14px;
     }
 
     .register-card h1 {
         font-size: 20px;
     }
+
+    .register-card p {
+        font-size: 13px;
+    }
+
+    .form-group input {
+        padding: 11px 12px;
+    }
+
+    .register-btn {
+        padding: 13px;
+        font-size: 15px;
+    }
 }
 
+
 /* =========================================================
-   Large phones (≥ 480px)
+   LARGE PHONES
+   ≥ 480px
    ========================================================= */
+
 @media (min-width: 480px) {
+
     .register {
         padding: 15px;
     }
@@ -185,10 +210,14 @@
     }
 }
 
+
 /* =========================================================
-   Tablets (≥ 768px)
+   TABLETS
+   ≥ 768px
    ========================================================= */
+
 @media (min-width: 768px) {
+
     .register {
         padding: 20px;
     }
@@ -213,6 +242,10 @@
         gap: 18px;
     }
 
+    .form-group label {
+        font-size: 14px;
+    }
+
     .form-group input {
         padding: 13px 16px;
         font-size: 15px;
@@ -223,26 +256,27 @@
         padding: 16px;
         margin-top: 10px;
     }
+
+    .login-link {
+        font-size: 15px;
+    }
 }
 
+
 /* =========================================================
-   Small laptops / desktop (≥ 992px)
-   Card stays centered and single-column — auth forms read
-   best narrow, so we widen padding/type rather than the
-   layout itself.
+   SMALL LAPTOPS / DESKTOP
+   ≥ 992px
    ========================================================= */
+
 @media (min-width: 992px) {
+
     .register-card {
         max-width: 520px;
-        padding: 55px 50px;
+        padding: 50px 50px;
     }
 
     .register-card h1 {
         font-size: 36px;
-    }
-
-    .form-group label {
-        font-size: 14px;
     }
 
     .form-group input {
@@ -251,16 +285,20 @@
     }
 }
 
+
 /* =========================================================
-   Large desktop (≥ 1440px)
+   LARGE DESKTOP
+   ≥ 1440px
    ========================================================= */
+
 @media (min-width: 1440px) {
+
     .register-card {
-        max-width: 560px;
-        padding: 60px 55px;
+        max-width: 540px;
+        padding: 55px 55px;
     }
 
     .register-card h1 {
-        font-size: 40px;
+        font-size: 38px;
     }
 }

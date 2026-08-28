@@ -1,7 +1,6 @@
 /* =========================================================
-   MOBILE-FIRST BASE STYLES (default = smallest screens)
-   Assumes the global reset + body background already exist
-   in HomeSection.css (shared across the app).
+   MOBILE-FIRST BASE STYLES
+   Default = smallest screens
    ========================================================= */
 
 /* Main Container */
@@ -98,7 +97,10 @@
     box-shadow: 0 0 0 3px rgba(106, 53, 255, 0.12);
 }
 
-/* Remember me / Forgot password row */
+/* =========================================================
+   Remember Me / Forgot Password
+   ========================================================= */
+
 .form-row {
     display: flex;
     align-items: center;
@@ -122,7 +124,9 @@
 .remember-me input[type="checkbox"] {
     width: 15px;
     height: 15px;
+
     accent-color: #6a35ff;
+
     cursor: pointer;
 }
 
@@ -137,7 +141,10 @@
     text-decoration: underline;
 }
 
-/* Button */
+/* =========================================================
+   Button
+   ========================================================= */
+
 .login-btn {
     width: 100%;
     margin-top: 8px;
@@ -182,29 +189,55 @@
     text-decoration: underline;
 }
 
+
 /* =========================================================
-   Small phones / very narrow screens (extra safety net)
+   VERY SMALL PHONES
+   ≤ 340px
    ========================================================= */
+
 @media (max-width: 340px) {
+
+    .login {
+        padding: 8px;
+    }
+
     .login-card {
         max-width: 100%;
         padding: 24px 14px;
+        border-radius: 14px;
     }
 
     .login-card h1 {
         font-size: 20px;
     }
 
+    .login-card p {
+        font-size: 13px;
+    }
+
     .form-row {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .form-group input {
+        padding: 11px 12px;
+    }
+
+    .login-btn {
+        padding: 13px;
+        font-size: 15px;
+    }
 }
 
+
 /* =========================================================
-   Large phones (≥ 480px)
+   LARGE PHONES
+   ≥ 480px
    ========================================================= */
+
 @media (min-width: 480px) {
+
     .login {
         padding: 15px;
     }
@@ -227,12 +260,21 @@
         font-size: 17px;
         padding: 15px;
     }
+
+    .remember-me,
+    .forgot-link {
+        font-size: 14px;
+    }
 }
 
+
 /* =========================================================
-   Tablets (≥ 768px)
+   TABLETS
+   ≥ 768px
    ========================================================= */
+
 @media (min-width: 768px) {
+
     .login {
         padding: 20px;
     }
@@ -257,9 +299,22 @@
         gap: 18px;
     }
 
+    .form-group label {
+        font-size: 14px;
+    }
+
     .form-group input {
         padding: 13px 16px;
         font-size: 15px;
+    }
+
+    .form-row {
+        flex-wrap: nowrap;
+    }
+
+    .remember-me,
+    .forgot-link {
+        font-size: 14px;
     }
 
     .login-btn {
@@ -267,25 +322,27 @@
         padding: 16px;
         margin-top: 10px;
     }
+
+    .register-link {
+        font-size: 15px;
+    }
 }
 
+
 /* =========================================================
-   Small laptops / desktop (≥ 992px)
-   Stays single-column and centered — login forms read best
-   narrow even on wide screens.
+   SMALL LAPTOPS / DESKTOP
+   ≥ 992px
    ========================================================= */
+
 @media (min-width: 992px) {
+
     .login-card {
         max-width: 480px;
-        padding: 55px 50px;
+        padding: 50px;
     }
 
     .login-card h1 {
         font-size: 36px;
-    }
-
-    .form-group label {
-        font-size: 14px;
     }
 
     .form-group input {
@@ -294,16 +351,20 @@
     }
 }
 
+
 /* =========================================================
-   Large desktop (≥ 1440px)
+   LARGE DESKTOP
+   ≥ 1440px
    ========================================================= */
+
 @media (min-width: 1440px) {
+
     .login-card {
         max-width: 520px;
-        padding: 60px 55px;
+        padding: 55px;
     }
 
     .login-card h1 {
-        font-size: 40px;
+        font-size: 38px;
     }
 }

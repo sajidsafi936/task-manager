@@ -26,7 +26,7 @@ const taskSchema = new mongoose.Schema({
     reminder: String,
     status: {
         type: String,
-        enum: ['pending', 'completed'],
+        enum: ['pending', 'completed', 'Overdue'],
         default: 'pending'
     },
     userId: {

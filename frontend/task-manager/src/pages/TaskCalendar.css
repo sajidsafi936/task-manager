@@ -1,0 +1,349 @@
+/* ==========================================================
+   CALENDAR CONTAINER
+   MOBILE — DEFAULT
+========================================================== */
+
+.Calendar-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    padding: 0 12px;
+}
+
+
+/* ==========================================================
+   CALENDAR
+========================================================== */
+
+.calendar-box {
+    width: 100%;
+    max-width: 500px;
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 10px;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   FILTERED TASKS
+========================================================== */
+
+.filterTasks-Display {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    padding: 0 12px;
+}
+
+
+/* ==========================================================
+   TASK ROW
+========================================================== */
+
+.task-row {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background-color: #f5f5f5;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   TASK TITLE
+========================================================== */
+
+.task-title {
+    flex: 1;
+
+    min-width: 0;
+
+    font-weight: 600;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   TASK INFORMATION
+========================================================== */
+
+.task-row span {
+    white-space: nowrap;
+
+    font-size: 13px;
+
+    flex-shrink: 0;
+}
+
+.filterTasks-Display p {
+    margin: 10px 0;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   HEADING
+========================================================== */
+
+h4 {
+    padding-left: 12px;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   ≤ 340px
+========================================================== */
+
+@media (max-width: 340px) {
+
+    .Calendar-container {
+        padding: 0 8px;
+    }
+
+    .calendar-box {
+        padding: 5px;
+    }
+
+    .filterTasks-Display {
+        padding: 0 8px;
+
+        gap: 8px;
+    }
+
+    .task-row {
+        gap: 7px;
+
+        padding: 10px;
+
+        font-size: 13px;
+    }
+
+    .task-row span {
+        font-size: 11px;
+    }
+
+    .filterTasks-Display p {
+        font-size: 13px;
+    }
+
+    h4 {
+        padding-left: 8px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE PHONES
+   ≥ 480px
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .Calendar-container {
+        padding: 0 18px;
+    }
+
+    .calendar-box {
+        max-width: 520px;
+
+        padding: 12px;
+    }
+
+    .filterTasks-Display {
+        padding: 0 18px;
+
+        gap: 12px;
+    }
+
+    .task-row {
+        gap: 15px;
+
+        padding: 14px 16px;
+
+        font-size: 14px;
+    }
+
+    .task-row span {
+        font-size: 13px;
+    }
+
+    h4 {
+        padding-left: 18px;
+
+        font-size: 17px;
+    }
+}
+
+
+/* ==========================================================
+   TABLETS
+   ≥ 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .Calendar-container {
+        padding: 0 25px;
+    }
+
+    .calendar-box {
+        max-width: 600px;
+
+        padding: 15px;
+    }
+
+    .filterTasks-Display {
+        max-width: 700px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 0 25px;
+
+        gap: 14px;
+    }
+
+    .task-row {
+        gap: 20px;
+
+        padding: 15px 18px;
+
+        font-size: 15px;
+    }
+
+    .task-row span {
+        font-size: 14px;
+    }
+
+    .filterTasks-Display p {
+        font-size: 15px;
+    }
+
+    h4 {
+        max-width: 700px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-left: 25px;
+
+        font-size: 18px;
+    }
+}
+
+
+/* ==========================================================
+   LAPTOP
+   ≥ 992px
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .Calendar-container {
+        padding: 0 30px;
+    }
+
+    .calendar-box {
+        max-width: 650px;
+
+        padding: 18px;
+    }
+
+    .filterTasks-Display {
+        max-width: 800px;
+
+        padding: 0 30px;
+    }
+
+    .task-row {
+        padding: 16px 20px;
+
+        border-radius: 12px;
+    }
+
+    h4 {
+        max-width: 800px;
+
+        padding-left: 30px;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ≥ 1200px
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .calendar-box {
+        max-width: 700px;
+    }
+
+    .filterTasks-Display {
+        max-width: 850px;
+    }
+
+    h4 {
+        max-width: 850px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ≥ 1440px
+========================================================== */
+
+@media (min-width: 1440px) {
+
+    .calendar-box {
+        max-width: 750px;
+    }
+
+    .filterTasks-Display {
+        max-width: 900px;
+    }
+
+    h4 {
+        max-width: 900px;
+    }
+}

@@ -1,0 +1,355 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f5f2ff;
+}
+
+/* ==========================================================
+   MOBILE — DEFAULT
+========================================================== */
+
+.home {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    overflow-x: hidden;
+}
+
+.card {
+    width: 100%;
+    max-width: 360px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 35px 22px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Image */
+
+.boy-img {
+    display: block;
+
+    width: 170px;
+    max-width: 100%;
+    height: auto;
+
+    margin: 0 auto 30px;
+}
+
+/* Content */
+
+.content {
+    width: 100%;
+}
+
+.content h1 {
+    color: #222;
+
+    font-size: 28px;
+    line-height: 1.25;
+
+    margin-bottom: 18px;
+}
+
+.content p {
+    color: #777;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+/* Button */
+
+.start-btn {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #6a35ff;
+    color: white;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.start-btn:hover {
+    background: #5728df;
+}
+
+.start-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+   ≤ 340px
+========================================================== */
+
+@media (max-width: 340px) {
+
+    .home {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 25px 15px;
+        border-radius: 16px;
+    }
+
+    .boy-img {
+        width: 140px;
+        margin-bottom: 24px;
+    }
+
+    .content h1 {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    .content p {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .start-btn {
+        padding: 13px;
+        font-size: 15px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE PHONES
+   ≥ 480px
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .home {
+        padding: 25px;
+    }
+
+    .card {
+        max-width: 400px;
+
+        padding: 40px 28px;
+
+        border-radius: 20px;
+    }
+
+    .boy-img {
+        width: 200px;
+        margin-bottom: 32px;
+    }
+
+    .content h1 {
+        font-size: 32px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .start-btn {
+        font-size: 17px;
+        padding: 15px;
+    }
+}
+
+
+/* ==========================================================
+   TABLETS
+   ≥ 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .home {
+        padding: 30px;
+    }
+
+    .card {
+        max-width: 500px;
+
+        padding: 50px 35px;
+
+        border-radius: 22px;
+    }
+
+    .boy-img {
+        width: 250px;
+        margin-bottom: 35px;
+    }
+
+    .content h1 {
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+
+    .content p {
+        font-size: 18px;
+        margin-bottom: 32px;
+    }
+
+    .start-btn {
+        font-size: 18px;
+        padding: 16px;
+    }
+}
+
+
+/* ==========================================================
+   LAPTOP
+   ≥ 992px
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .home {
+        padding: 40px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 900px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 60px;
+
+        padding: 60px;
+
+        text-align: left;
+    }
+
+    .boy-img {
+        width: 320px;
+        max-width: 40%;
+
+        margin: 0;
+
+        flex-shrink: 0;
+    }
+
+    .content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .content h1 {
+        font-size: 42px;
+    }
+
+    .content p {
+        max-width: 420px;
+        font-size: 18px;
+    }
+
+    .start-btn {
+        width: fit-content;
+
+        padding: 16px 35px;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ≥ 1200px
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .home {
+        padding: 50px;
+    }
+
+    .card {
+        max-width: 1050px;
+
+        gap: 80px;
+
+        padding: 70px;
+    }
+
+    .boy-img {
+        width: 380px;
+        max-width: 42%;
+    }
+
+    .content h1 {
+        font-size: 48px;
+    }
+
+    .content p {
+        font-size: 19px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ≥ 1440px
+========================================================== */
+
+@media (min-width: 1440px) {
+
+    .card {
+        max-width: 1150px;
+
+        padding: 75px;
+    }
+
+    .boy-img {
+        width: 420px;
+        max-width: 42%;
+    }
+
+    .content h1 {
+        font-size: 52px;
+    }
+}

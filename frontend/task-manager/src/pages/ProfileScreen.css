@@ -1,0 +1,593 @@
+/* ==========================================================
+   PROFILE SCREEN
+   MOBILE — DEFAULT
+========================================================== */
+
+.profile-screen {
+    width: 100%;
+    min-height: 100vh;
+
+    background: #F4F2FB;
+
+    padding-bottom: 90px;
+
+    font-family: "Inter", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.profile-header {
+    width: 100%;
+
+    background: linear-gradient(
+        160deg,
+        #6C4CE0 0%,
+        #7B5CF0 55%,
+        #9B7BFA 100%
+    );
+
+    padding: 48px 24px 28px;
+
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: #fff;
+}
+
+.avatar-wrap {
+    position: relative;
+
+    width: 96px;
+    height: 96px;
+
+    margin-bottom: 14px;
+}
+
+.avatar-img {
+    width: 96px;
+    height: 96px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.avatar-edit-btn {
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #6C4CE0;
+
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    transition: 0.2s ease;
+}
+
+.avatar-edit-btn:hover {
+    transform: scale(1.05);
+}
+
+.avatar-edit-btn:active {
+    transform: scale(0.95);
+}
+
+.profile-name {
+    margin: 0;
+
+    font-size: 1.3rem;
+    font-weight: 700;
+
+    max-width: 100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-email {
+    margin: 2px 0 20px;
+
+    max-width: 100%;
+
+    font-size: 0.85rem;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ==========================================================
+   PROFILE STATS
+========================================================== */
+
+.profile-stats {
+    width: 100%;
+    max-width: 500px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 14px 8px;
+}
+
+.profile-stat {
+    flex: 1;
+
+    text-align: center;
+}
+
+.profile-stat h3 {
+    margin: 0;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.profile-stat p {
+    margin: 2px 0 0;
+
+    font-size: 0.75rem;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* ==========================================================
+   PROFILE MENU
+========================================================== */
+
+.profile-menu {
+    width: auto;
+
+    margin: 20px 16px 0;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 14px rgba(108, 76, 224, 0.08);
+}
+
+.profile-menu-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 18px;
+
+    background: none;
+
+    border: none;
+    border-bottom: 1px solid #F0EDFA;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    color: #2E2A3D;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: 0.2s ease;
+}
+
+.profile-menu-item:hover {
+    background: #faf9ff;
+}
+
+.profile-menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item-left {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+}
+
+.menu-icon {
+    color: #6C4CE0;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.menu-label {
+    font-weight: 500;
+}
+
+.menu-arrow {
+    color: #B9B4CC;
+
+    font-size: 0.75rem;
+
+    flex-shrink: 0;
+}
+
+.profile-menu-item.logout {
+    color: #E5484D;
+}
+
+.logout-icon {
+    color: #E5484D;
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   ≤ 340px
+========================================================== */
+
+@media (max-width: 340px) {
+
+    .profile-screen {
+        padding-bottom: 75px;
+    }
+
+    .profile-header {
+        padding: 35px 16px 22px;
+
+        border-bottom-left-radius: 22px;
+        border-bottom-right-radius: 22px;
+    }
+
+    .avatar-wrap {
+        width: 85px;
+        height: 85px;
+
+        margin-bottom: 12px;
+    }
+
+    .avatar-img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .avatar-edit-btn {
+        width: 27px;
+        height: 27px;
+    }
+
+    .profile-name {
+        font-size: 1.15rem;
+    }
+
+    .profile-email {
+        font-size: 0.78rem;
+
+        margin-bottom: 16px;
+    }
+
+    .profile-stats {
+        padding: 12px 5px;
+    }
+
+    .profile-stat h3 {
+        font-size: 1rem;
+    }
+
+    .profile-stat p {
+        font-size: 0.68rem;
+    }
+
+    .profile-menu {
+        margin: 16px 12px 0;
+
+        border-radius: 15px;
+    }
+
+    .profile-menu-item {
+        padding: 14px;
+
+        font-size: 0.88rem;
+    }
+
+    .menu-item-left {
+        gap: 10px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE PHONES
+   ≥ 480px
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .profile-header {
+        padding: 55px 30px 32px;
+
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+    }
+
+    .avatar-wrap {
+        width: 105px;
+        height: 105px;
+    }
+
+    .avatar-img {
+        width: 105px;
+        height: 105px;
+    }
+
+    .avatar-edit-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .profile-name {
+        font-size: 1.4rem;
+    }
+
+    .profile-email {
+        font-size: 0.9rem;
+    }
+
+    .profile-stats {
+        max-width: 550px;
+
+        padding: 16px 12px;
+    }
+
+    .profile-stat h3 {
+        font-size: 1.2rem;
+    }
+
+    .profile-stat p {
+        font-size: 0.8rem;
+    }
+
+    .profile-menu {
+        margin: 24px 25px 0;
+    }
+
+    .profile-menu-item {
+        padding: 17px 20px;
+    }
+}
+
+
+/* ==========================================================
+   TABLETS
+   ≥ 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .profile-screen {
+        padding-bottom: 90px;
+    }
+
+    .profile-header {
+        padding: 60px 40px 38px;
+
+        border-bottom-left-radius: 36px;
+        border-bottom-right-radius: 36px;
+    }
+
+    .avatar-wrap {
+        width: 115px;
+        height: 115px;
+
+        margin-bottom: 16px;
+    }
+
+    .avatar-img {
+        width: 115px;
+        height: 115px;
+    }
+
+    .avatar-edit-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .profile-name {
+        font-size: 1.55rem;
+    }
+
+    .profile-email {
+        font-size: 0.95rem;
+
+        margin-bottom: 24px;
+    }
+
+    .profile-stats {
+        max-width: 600px;
+
+        padding: 18px 15px;
+    }
+
+    .profile-stat h3 {
+        font-size: 1.3rem;
+    }
+
+    .profile-stat p {
+        font-size: 0.85rem;
+    }
+
+    .profile-menu {
+        width: 100%;
+        max-width: 650px;
+
+        margin: 28px auto 0;
+    }
+
+    .profile-menu-item {
+        padding: 18px 22px;
+
+        font-size: 1rem;
+    }
+}
+
+
+/* ==========================================================
+   LAPTOP
+   ≥ 992px
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .profile-header {
+        padding: 65px 50px 42px;
+    }
+
+    .avatar-wrap {
+        width: 125px;
+        height: 125px;
+    }
+
+    .avatar-img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .avatar-edit-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-name {
+        font-size: 1.7rem;
+    }
+
+    .profile-email {
+        font-size: 1rem;
+    }
+
+    .profile-stats {
+        max-width: 650px;
+
+        padding: 20px;
+    }
+
+    .profile-stat h3 {
+        font-size: 1.4rem;
+    }
+
+    .profile-stat p {
+        font-size: 0.9rem;
+    }
+
+    .profile-menu {
+        max-width: 700px;
+
+        margin-top: 32px;
+    }
+
+    .profile-menu-item {
+        padding: 19px 24px;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ≥ 1200px
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .profile-header {
+        padding-top: 70px;
+        padding-bottom: 45px;
+    }
+
+    .profile-menu {
+        max-width: 750px;
+    }
+
+    .profile-menu-item {
+        padding: 20px 26px;
+
+        font-size: 1.02rem;
+    }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ≥ 1440px
+========================================================== */
+
+@media (min-width: 1440px) {
+
+    .profile-header {
+        padding-top: 75px;
+        padding-bottom: 50px;
+    }
+
+    .avatar-wrap {
+        width: 135px;
+        height: 135px;
+    }
+
+    .avatar-img {
+        width: 135px;
+        height: 135px;
+    }
+
+    .avatar-edit-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+    }
+
+    .profile-menu {
+        max-width: 800px;
+    }
+}
