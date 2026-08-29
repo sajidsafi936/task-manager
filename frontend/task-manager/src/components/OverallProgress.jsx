@@ -29,9 +29,10 @@ const Progress = () => {
   const completionPercentage = Math.round(
   (completedTasks / totalTasks) * 100);
 
+
   return (
     <>
-        <div className="progress-box">
+        <div className="overall-progress-box">
           <div>
             <h4>Overall Progress</h4>
 
@@ -40,8 +41,8 @@ const Progress = () => {
               data={summaryData}
               dataKey="value"
               nameKey="name"
-              innerRadius={50}
-              outerRadius={70}
+              innerRadius={40}
+              outerRadius={60}
             >
               {summaryData.map((entry, index) => (
               <Cell key={entry.name} fill={COLORS[index]} />
@@ -57,18 +58,18 @@ const Progress = () => {
 
           <div>
             <div className="chart-legend">
-            {summaryData.map((item, index) => (
-            <div className="legend-item" key={item.name}>
-            <span
-            className="legend-color"
-            style={{ backgroundColor: COLORS[index] }}
-            ></span>
+              {summaryData.map((item, index) => (
+              <div className="legend-item" key={item.name}>
+                <span
+                className="legend-color"
+                style={{ backgroundColor: COLORS[index] }}
+                ></span>
 
-            <span>{item.name}</span>
-            <span>{item.value}</span>
-          </div>
-            ))}
-          </div>
+                <span>{item.name}</span>
+                <span>{item.value}</span>
+                </div>
+                ))}
+              </div>
           </div>
                     
         </div>

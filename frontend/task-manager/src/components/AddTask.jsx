@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./AddTask.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { MdWork } from "react-icons/md";
 import toast from "react-hot-toast";
 
 const AddTask = () => {
@@ -109,8 +108,12 @@ const AddTask = () => {
             </div>
 
             <div className="catogory-box">
-              <MdWork size="2em" />
-              <h5>Work</h5>
+              <select name="" id="">
+                <option value="">Work</option>
+                <option value="">Study</option>
+                <option value="">Personal</option>
+                <option value="">Other</option>
+              </select>
             </div>
 
           </div>

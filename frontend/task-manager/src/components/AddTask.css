@@ -194,7 +194,7 @@ body {
     outline: none;
 }
 
-.catogory-box-select select {
+.catogory-box-select select, .catogory-box select {
     width: 100%;
     height: 43px;
 

@@ -2,6 +2,8 @@ import React from 'react'
 import "./Progress.css"
 import BattomNavbar from "../components/BottomNavbar"
 import OverallProgress from "../components/OverallProgress"
+import TaskOverview from '../components/TaskOverview'
+import CatagoryBreakdown from '../components/CatagoryBreakdown'
 
 const Progress = () => {
  
@@ -23,8 +25,12 @@ const Progress = () => {
         <div> 
           <OverallProgress/>
         </div>
-        <div className="progress-box">no react changed</div>
-        <div className="progress-box">no react changed</div>
+        <div>
+          <TaskOverview/>
+        </div>
+        <div>
+          <CatagoryBreakdown/>
+        </div>
       </div>
       <BattomNavbar/>
     </>
