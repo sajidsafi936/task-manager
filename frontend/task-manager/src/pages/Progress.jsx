@@ -15,9 +15,9 @@ const Progress = () => {
           <h3>Progress</h3>
           <select className='select' name="" id="">
             <option value="">This Week</option>
-            <option value="">Previous Week</option>
+            <option value="">Last Week</option>
             <option value="">This Month</option>
-            <option value="">Previous Week</option>
+            <option value="">Last Month</option>
             <option value="">This Year</option>
             <option value="">Last Year</option>
           </select>

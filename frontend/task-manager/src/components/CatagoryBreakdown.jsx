@@ -6,24 +6,24 @@ const CatagoryBreakdown = () => {
 
     const summaryData = [
    {
-      name: "Completed",
+      name: "Work",
       value: 18
    },
    {
-      name: "Pending",
+      name: "Study",
       value: 5
    },
    {
-      name: "Overdue",
+      name: "Personal",
       value: 2
    },
    {
-      name: "due",
+      name: "Other",
       value: 3
    }
   ]
 
-  const COLORS = ["green", "orange", "red", "lightblue"];
+  const COLORS = ["Pink", "orange", "red", "lightblue"];
 
   return (
     <div className='catagory-card'>

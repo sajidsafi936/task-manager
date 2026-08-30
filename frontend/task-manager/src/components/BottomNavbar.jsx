@@ -1,10 +1,6 @@
 import "./BottomNavbar.css"
-import AddTask from "./AddTask";
-import { Link, useNavigation } from "react-router-dom";
-import ProfileScreen from "../pages/ProfileScreen.jsx";
-import TaskCalendar from "../pages/TaskCalendar.jsx";
-import HomeDashboard from "../pages/HomeDashboard.jsx";
-import Progress from "../pages/Progress.jsx";
+import { NavLink} from "react-router-dom";
+
 
 import {
   House,
@@ -13,45 +9,46 @@ import {
   ChartLine,
   User,
 } from "phosphor-react";
+import { useState } from "react";
 
 function BottomNavbar() {
   return (
     <div className="bottom-nav">
 
-      <Link to="/HomeDashboard">
+      <NavLink to="/HomeDashboard">
       <div className="nav-item active">
-        <House size={22} weight="fill" />
+        <House size={22} weight="fill"/>
         <span>Home</span>
       </div>      
-      </Link>
+      </NavLink>
 
-      <Link to='/TaskCalendar'>
+      <NavLink to='/TaskCalendar'>
         <div className="nav-item">
         <Calendar size={22} />
         <span>Calendar</span>
       </div>
-      </Link>
+      </NavLink>
 
       <button className="add-btn">
-        <Link to='/AddTask'>
+        <NavLink to='/AddTask'>
         <Plus size={28} weight="bold" />        
-        </Link>
+        </NavLink>
         
       </button>
 
-      <Link to="/Progress">
+      <NavLink to="/Progress">
         <div className="nav-item">
         <ChartLine size={22} />
         <span>Progress</span>
         </div>      
-      </Link>
+      </NavLink>
       
-      <Link to="/profile">
+      <NavLink to="/profile">
       <div className="nav-item">
         <User size={22} />
         <span>Profile</span>
       </div>
-      </Link>
+      </NavLink>
 
     </div>
   );

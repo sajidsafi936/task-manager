@@ -18,7 +18,7 @@ const Progress = () => {
    }
   ]
 
-  const COLORS = ["green", "orange", "red"];
+  const COLORS = ["Lightblue", "orange", "red"];
 
   const totalTasks = summaryData.reduce((total, item) => {
     return total + item.value;

@@ -7,9 +7,9 @@
 .catagory-card{
     width: 100%;
     min-height: 150px;
-    border: 1px solid #b9b8b8;
     margin-top: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-size: 15px;
 }
 
 .legend-item {

@@ -12,7 +12,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import BottomNavbar from "../components/BottomNavbar";
 import profile from "../assets/profile.png";
-import EditProfile from "../components/EditProfile";
 
 const ProfileScreen = () => {
   const navigate = useNavigate();

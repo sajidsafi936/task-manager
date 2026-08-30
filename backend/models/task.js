@@ -10,7 +10,8 @@ const taskSchema = new mongoose.Schema({
     },
     catagory: {
         type: String,
-        default: 'Work',
+        enum: ['work', 'Study', 'Personal', 'Other'],
+        default: 'Work'
     },
     proiority: {
         type: String,
