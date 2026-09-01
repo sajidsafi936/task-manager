@@ -58,16 +58,21 @@ const Progress = () => {
     }
   ]
 
-  const COLORS = ["red", "blue", "pink"]
+  const COLORS = ["lightblue", "pink", "orange"]
 
   const completionPercentage = totalTask > 0 ? Math.round((completedTasks / totalTask) * 100) : 0;
-
+  const noTasks = (tasks.length) === 0;
   return (
-    <>
-    {loading? (
-      <p>Loading Progress...</p>
-    ):(
         <div className="overall-progress-box">
+        {loading? (
+            <p>Loading progress</p>
+         ):(
+            noTasks? (
+                <div>
+                <p>No tasks yet</p>
+                <p>Create a task to see your progress</p></div>
+            ):(
+              <>
         
           <div>
             <h4>Overall Progress</h4>
@@ -107,10 +112,10 @@ const Progress = () => {
                 ))}
               </div>
           </div>
-                    
+          </>   
+            )
+          )}
         </div>
-        )}
-    </>
   )
 }
 

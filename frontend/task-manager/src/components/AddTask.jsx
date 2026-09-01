@@ -108,7 +108,11 @@ const AddTask = () => {
             </div>
 
             <div className="catogory-box">
-              <select name="catagory" id="">
+              <select 
+              name="catagory" 
+              value={formData.catagory}
+              onChange={handleChange}              
+              >
                 <option value="Work">Work</option>
                 <option value="Study">Study</option>
                 <option value="Personal">Personal</option>
