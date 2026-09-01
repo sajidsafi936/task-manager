@@ -1,38 +1,74 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./OverallProgress.css"
 import {PieChart, Pie, Cell, Label} from "recharts"
 
 const Progress = () => {
+  
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(()=>{
+    const fetchTasks = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/tasks`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const data = await res.json();
+
+        if (res.ok) {
+          setTasks(data);
+        } else {
+          console.error(data.message);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTasks();
+  }, []);
+
+  const totalTask = tasks.length;
+  const completedTasks = tasks.filter(task=>task.status === "completed").length;
+  const pendingTasks = tasks.filter(task=>task.status === "pending").length;
+  const overdueTasks = tasks.filter(task=>task.status === "Overdue").length;
+
   const summaryData = [
-   {
-      name: "Completed",
-      value: 18
-   },
-   {
-      name: "Pending",
-      value: 5
-   },
-   {
-      name: "Overdue",
-      value: 2
-   }
+    {
+      name : "completed",
+      value : completedTasks
+    },
+    {
+      name : "pending",
+      value : pendingTasks
+    },
+    {
+      name : "overdue",
+      value : overdueTasks
+    }
   ]
 
-  const COLORS = ["Lightblue", "orange", "red"];
+  const COLORS = ["red", "blue", "pink"]
 
-  const totalTasks = summaryData.reduce((total, item) => {
-    return total + item.value;
-  }, 0);
-
-  const completedTasks = summaryData[0].value;
-
-  const completionPercentage = Math.round(
-  (completedTasks / totalTasks) * 100);
-
+  const completionPercentage = totalTask > 0 ? Math.round((completedTasks / totalTask) * 100) : 0;
 
   return (
     <>
+    {loading? (
+      <p>Loading Progress...</p>
+    ):(
         <div className="overall-progress-box">
+        
           <div>
             <h4>Overall Progress</h4>
 
@@ -73,6 +109,7 @@ const Progress = () => {
           </div>
                     
         </div>
+        )}
     </>
   )
 }
