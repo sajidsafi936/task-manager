@@ -108,11 +108,11 @@ const AddTask = () => {
             </div>
 
             <div className="catogory-box">
-              <select name="" id="">
-                <option value="">Work</option>
-                <option value="">Study</option>
-                <option value="">Personal</option>
-                <option value="">Other</option>
+              <select name="catagory" id="">
+                <option value="Work">Work</option>
+                <option value="Study">Study</option>
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
