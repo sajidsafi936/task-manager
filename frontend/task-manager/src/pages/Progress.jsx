@@ -139,8 +139,8 @@ const Progress = () => {
 
 
         {/* overall progress */}
-        <div> 
-          <div className="progress-card">
+        <div className='progress-card'> 
+          <div className='overallTask-card'>
                   {loading? (
                       <p>Loading progress</p>
                    ):(
@@ -199,7 +199,7 @@ const Progress = () => {
 
         {/* task overview */}
         <div className='progress-card'>
-          <div className='taskoverview-box'>
+          <div className='taskoverview-card'>
                   <h4>Tasks Overview</h4>
                   <ResponsiveContainer  width="100%" height={150}>
                   <BarChart data={weekData} barCategoryGap="0%">
@@ -219,8 +219,8 @@ const Progress = () => {
 
 
         {/* task breakthrough */}
-        <div>
-          <div className='progress-card'>
+        <div className='progress-card'>
+          <div className='taskbreakdown-card'>
                       {loading? (
                       <p>Loading progress</p>
                    ):(

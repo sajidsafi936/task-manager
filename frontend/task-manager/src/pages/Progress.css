@@ -47,9 +47,8 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     gap: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
 }
 
@@ -74,3 +73,9 @@
   border-radius: 50%;
 }
 
+.overallTask-card, .taskbreakdown-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
