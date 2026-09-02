@@ -7,7 +7,7 @@
     width: 100%;
     min-height: 100vh;
 
-    background: #F4F2FB;
+    background: #fff;
 
     padding-bottom: 90px;
 
@@ -186,7 +186,7 @@
 
     overflow: hidden;
 
-    box-shadow: 0 4px 14px rgba(108, 76, 224, 0.08);
+    box-shadow: 0 4px 14px rgba(108, 76, 224, 0.2);
 }
 
 .profile-menu-item {

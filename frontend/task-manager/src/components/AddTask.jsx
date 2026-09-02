@@ -78,7 +78,7 @@ const AddTask = () => {
             type="text"
             name="title"
             id="title"
-            placeholder="Task Title"
+            placeholder="Add your title"
             value={formData.title}
             onChange={handleChange}
             required

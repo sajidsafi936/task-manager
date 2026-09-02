@@ -10,6 +10,8 @@
     display: flex;
     flex-direction: column;
     margin: 10px;
+    background: #fff;
+
 }
 
 .top-heading{
@@ -28,8 +30,8 @@
     min-width: 95px;
     font-size: 15px;
     font-weight: 550;
-    color: #64748B;
-    background: #FFFFFF;
+    color: black;
+    background: #eff0f0;
     border-radius: 5px;
     border: none;
     padding: 5px;

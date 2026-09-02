@@ -3,6 +3,10 @@
    MOBILE — DEFAULT
 ========================================================== */
 
+body{
+    background: #fff;
+}
+
 .Calendar-container {
     width: 100%;
 
@@ -16,6 +20,8 @@
 }
 
 
+
+
 /* ==========================================================
    CALENDAR
 ========================================================== */
@@ -24,12 +30,13 @@
     width: 100%;
     max-width: 500px;
 
-    border: none;
     border-radius: 12px;
 
     padding: 10px;
 
     overflow: hidden;
+    border: none;
+    
 }
 
 

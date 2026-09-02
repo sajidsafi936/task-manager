@@ -63,7 +63,7 @@ const CatagoryBreakdown = () => {
         }
       ]
     
-      const COLORS = ["silver", "lightblue", "pink", "orange"]
+      const COLORS = ["#8491E8", "#208BC8", "#BD5EEC", "#F8C158"]
     
       const noTasks = (tasks.length) === 0;
 

@@ -58,7 +58,7 @@ const Progress = () => {
     }
   ]
 
-  const COLORS = ["lightblue", "pink", "orange"]
+  const COLORS = ["#20B982", "#A5A9B8", "#EF8B8C"]
 
   const completionPercentage = totalTask > 0 ? Math.round((completedTasks / totalTask) * 100) : 0;
   const noTasks = (tasks.length) === 0;
