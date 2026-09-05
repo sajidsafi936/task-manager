@@ -10,7 +10,9 @@
     left: 0;
 
     width: 100%;
-    height: 75px;
+    /* extra height on iPhones with a home-indicator so icons
+       don't sit under/behind it */
+    height: calc(75px + env(safe-area-inset-bottom));
 
     background: white;
 
@@ -23,6 +25,10 @@
     z-index: 100;
 
     padding: 0 8px;
+    /* pushes the actual icons up above the home-indicator,
+       instead of just growing the background */
+    padding-bottom: env(safe-area-inset-bottom);
+    box-sizing: border-box;
 }
 
 .nav-item {
@@ -93,9 +99,10 @@
 @media (max-width: 340px) {
 
     .bottom-nav {
-        height: 70px;
+        height: calc(70px + env(safe-area-inset-bottom));
 
         padding: 0 4px;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     .nav-item {
@@ -126,9 +133,10 @@
 @media (min-width: 480px) {
 
     .bottom-nav {
-        height: 80px;
+        height: calc(80px + env(safe-area-inset-bottom));
 
         padding: 0 20px;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     .nav-item {
@@ -159,9 +167,10 @@
 @media (min-width: 768px) {
 
     .bottom-nav {
-        height: 80px;
+        height: calc(80px + env(safe-area-inset-bottom));
 
         padding: 0 60px;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     .nav-item {

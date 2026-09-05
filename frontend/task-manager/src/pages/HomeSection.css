@@ -23,13 +23,16 @@ body {
 
 .home {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100vh;   /* fallback for old browsers */
+    min-height: 100dvh;  /* real visible height on iOS Safari */
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
     overflow-x: hidden;
 }
@@ -130,6 +133,8 @@ body {
 
     .home {
         padding: 12px;
+        padding-top: calc(12px + env(safe-area-inset-top));
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
     }
 
     .card {
@@ -155,6 +160,27 @@ body {
     .start-btn {
         padding: 13px;
         font-size: 15px;
+    }
+}
+
+
+/* ==========================================================
+   COMMON PHONE WIDTHS (most iPhones + Android)
+   375px – 479px
+========================================================== */
+
+@media (min-width: 375px) and (max-width: 479px) {
+
+    .card {
+        padding: 38px 24px;
+    }
+
+    .boy-img {
+        width: 180px;
+    }
+
+    .content h1 {
+        font-size: 30px;
     }
 }
 

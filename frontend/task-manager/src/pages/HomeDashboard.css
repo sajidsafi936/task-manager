@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-text-size-adjust: 100%; /* stop iOS auto text scaling */
 }
 
 
@@ -26,9 +27,12 @@ body {
 
 .home-dashboard {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100vh;              /* fallback for old browsers */
+    min-height: 100dvh;             /* real visible height on iOS Safari */
 
-    padding-bottom: 75px;
+    /* extra bottom padding so content never hides under the fixed
+       footer + iPhone home-indicator */
+    padding-bottom: calc(75px + env(safe-area-inset-bottom));
 
     overflow-x: hidden;
     background: #fff;
@@ -50,6 +54,7 @@ body {
     gap: 15px;
 
     padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top)); /* notch safety */
 }
 
 .greeting {
@@ -123,7 +128,15 @@ body {
     padding-left: 8px;
 
     font-family: "Poppins", sans-serif;
-    font-size: 11px;
+
+    /* IMPORTANT: must stay >= 16px or iOS Safari auto-zooms
+       the page when the field is focused. We keep it visually
+       compact with a scale transform instead of shrinking the
+       real font-size. */
+    font-size: 16px;
+    transform: scale(0.85);
+    transform-origin: left center;
+    width: calc(100% / 0.85);
 
     background: transparent;
 }
@@ -366,6 +379,9 @@ body {
 .footer {
     width: 100%;
     height: 75px;
+    /* pad the inside of the footer so icons/labels don't sit
+       under the iPhone home-indicator bar */
+    padding-bottom: env(safe-area-inset-bottom);
 
     position: fixed;
     bottom: 0;
@@ -386,6 +402,7 @@ body {
 
     .header {
         padding: 16px;
+        padding-top: calc(16px + env(safe-area-inset-top));
     }
 
     .greeting p {
@@ -465,6 +482,32 @@ body {
 
 
 /* ==========================================================
+   COMMON PHONE WIDTHS (most iPhones + Android)
+   375px – 479px  e.g. iPhone SE/12/13/14, Redmi, Vivo
+========================================================== */
+
+@media (min-width: 375px) and (max-width: 479px) {
+
+    .greeting h2 {
+        font-size: 21px;
+    }
+
+    .header-img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .dashboard-summary {
+        gap: 14px;
+    }
+
+    .stat-card {
+        min-height: 74px;
+    }
+}
+
+
+/* ==========================================================
    LARGE PHONES
    ≥ 480px
 ========================================================== */
@@ -475,6 +518,7 @@ body {
         min-height: 100px;
 
         padding: 22px 25px;
+        padding-top: calc(22px + env(safe-area-inset-top));
     }
 
     .greeting p {
@@ -495,10 +539,6 @@ body {
         height: 46px;
 
         padding: 0 14px;
-    }
-
-    .search input {
-        font-size: 13px;
     }
 
     .search-icon {
@@ -549,7 +589,7 @@ body {
 @media (min-width: 768px) {
 
     .home-dashboard {
-        padding-bottom: 85px;
+        padding-bottom: calc(85px + env(safe-area-inset-bottom));
     }
 
     .header {
@@ -559,6 +599,7 @@ body {
         margin: 0 auto;
 
         padding: 25px 30px;
+        padding-top: calc(25px + env(safe-area-inset-top));
     }
 
     .greeting p {
@@ -580,10 +621,6 @@ body {
         height: 48px;
 
         padding: 0 16px;
-    }
-
-    .search input {
-        font-size: 14px;
     }
 
     .dashboard-summary {
@@ -686,10 +723,6 @@ body {
         max-width: 1120px;
 
         height: 50px;
-    }
-
-    .search input {
-        font-size: 14px;
     }
 
     .dashboard-summary {

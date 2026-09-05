@@ -30,6 +30,7 @@ body {
     align-items: center;
 
     padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top));
 
     gap: 20px;
 }
@@ -70,15 +71,17 @@ body {
     background: none;
 
     /* border: 1px solid #777; */
-    border: none;
+    border: 1px solid #676464;
     border-radius: 8px;
 
     padding: 0 12px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
     font-family: inherit;
-    font-size: 12px;
+
+    /* must stay >= 16px or iOS Safari auto-zooms the page
+       when this field is focused */
+    font-size: 16px;
 
     outline: none;
 }
@@ -116,15 +119,16 @@ body {
     background: none;
 
     /* border: 1px solid #777; */
-    border: none;
+    border: 1px solid #676464;
     border-radius: 8px;
 
     padding: 10px 12px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
     font-family: inherit;
-    font-size: 12px;
+
+    /* textareas trigger the same iOS zoom bug as inputs */
+    font-size: 16px;
 
     resize: vertical;
 
@@ -191,7 +195,9 @@ body {
     margin-right: 0;
 
     font-family: inherit;
-    font-size: 15px;
+
+    /* select/input elements also trigger iOS zoom below 16px */
+    font-size: 16px;
 
     outline: none;
 }
@@ -207,7 +213,7 @@ body {
     color: #313131;
 
     font-family: inherit;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 550;
 
     background: transparent;
@@ -237,7 +243,7 @@ body {
     color: #313131;
 
     font-family: inherit;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 550;
 
     background: #fff;
@@ -248,6 +254,10 @@ body {
 .proiority select:focus,
 .proiority input:focus {
     border-color: #6a35ff;
+}
+
+h4{
+    margin-bottom: 4px;
 }
 
 
@@ -297,6 +307,7 @@ body {
 
     .addTask-header {
         padding: 16px;
+        padding-top: calc(16px + env(safe-area-inset-top));
         gap: 15px;
     }
 
@@ -339,6 +350,7 @@ body {
 
     .addTask-header {
         padding: 24px;
+        padding-top: calc(24px + env(safe-area-inset-top));
         gap: 25px;
     }
 
@@ -354,12 +366,10 @@ body {
 
     .title-form input {
         height: 46px;
-        font-size: 13px;
     }
 
     .description-form textarea {
         height: 100px;
-        font-size: 13px;
     }
 
     .task-detail {
@@ -406,6 +416,7 @@ body {
 
     .addTask-header {
         padding: 25px 30px;
+        padding-top: calc(25px + env(safe-area-inset-top));
     }
 
     .title-form,
@@ -471,12 +482,10 @@ body {
 
     .title-form input {
         height: 48px;
-        font-size: 14px;
     }
 
     .description-form textarea {
         height: 140px;
-        font-size: 14px;
     }
 
     .task-detail {

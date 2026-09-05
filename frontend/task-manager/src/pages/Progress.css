@@ -5,13 +5,15 @@
 }
 
 
+/* ==========================================================
+   MOBILE — DEFAULT
+========================================================== */
 
 .progress-container{
     display: flex;
     flex-direction: column;
     margin: 10px;
     background: #fff;
-
 }
 
 .top-heading{
@@ -28,7 +30,10 @@
 .select{
     height: 30px;
     min-width: 95px;
-    font-size: 15px;
+
+    /* must stay >= 16px or iOS Safari auto-zooms the page
+       when this dropdown is tapped */
+    font-size: 16px;
     font-weight: 550;
     color: black;
     background: #eff0f0;
@@ -41,15 +46,14 @@
 .progress-card{
     width: 100%;
     min-height: 150px;
-    background: #fff;;
+    background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 24px;          /* was 50px — too wide on narrow phones */
     margin-bottom: 10px;
-
 }
 
 .chart-legend {
@@ -76,6 +80,149 @@
 .overallTask-card, .taskbreakdown-card{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;      /* lets content drop to a new line instead of overflowing */
     align-items: center;
-    gap: 50px;
+    gap: 20px;            /* was 50px — caused overflow/cramping on small phones */
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   ≤ 340px
+========================================================== */
+
+@media (max-width: 340px) {
+
+    .progress-container {
+        margin: 8px;
+    }
+
+    .top-heading {
+        padding: 8px;
+    }
+
+    .select {
+        min-width: 85px;
+        font-size: 16px; /* keep at 16px even here */
+    }
+
+    .progress-card {
+        padding: 8px;
+        gap: 18px;
+    }
+
+    .overallTask-card, .taskbreakdown-card {
+        gap: 14px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE PHONES
+   ≥ 480px
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .progress-container {
+        margin: 14px;
+    }
+
+    .top-heading {
+        padding: 12px;
+    }
+
+    .progress-card {
+        gap: 30px;
+        padding: 14px;
+    }
+
+    .overallTask-card, .taskbreakdown-card {
+        gap: 30px;
+        flex-wrap: nowrap;
+    }
+}
+
+
+/* ==========================================================
+   TABLETS
+   ≥ 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .progress-container {
+        max-width: 700px;
+        margin: 20px auto;
+    }
+
+    .top-heading {
+        padding: 14px 16px;
+    }
+
+    .select {
+        min-width: 105px;
+        height: 34px;
+    }
+
+    .progress-card {
+        gap: 40px;
+        padding: 18px;
+    }
+
+    .chart-legend {
+        font-size: 16px;
+    }
+
+    .overallTask-card, .taskbreakdown-card {
+        gap: 40px;
+    }
+}
+
+
+/* ==========================================================
+   LAPTOP
+   ≥ 992px
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .progress-container {
+        max-width: 900px;
+    }
+
+    .progress-card {
+        gap: 50px;
+        padding: 22px;
+    }
+
+    .overallTask-card, .taskbreakdown-card {
+        gap: 50px;
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ≥ 1200px
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .progress-container {
+        max-width: 1050px;
+    }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ≥ 1440px
+========================================================== */
+
+@media (min-width: 1440px) {
+
+    .progress-container {
+        max-width: 1150px;
+    }
 }

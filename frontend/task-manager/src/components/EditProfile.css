@@ -5,9 +5,12 @@
 
 .edit-profile-container {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100vh;   /* fallback for old browsers */
+    min-height: 100dvh;  /* real visible height on iOS Safari */
 
     padding: 30px 20px;
+    padding-top: calc(30px + env(safe-area-inset-top));
+    padding-bottom: calc(30px + env(safe-area-inset-bottom));
 
     display: flex;
     justify-content: center;
@@ -165,7 +168,10 @@
     outline: none;
 
     font-family: inherit;
-    font-size: 15px;
+
+    /* must stay >= 16px or iOS Safari auto-zooms the page
+       when the user taps into the field */
+    font-size: 16px;
 
     transition: 0.2s ease;
 }
@@ -247,6 +253,8 @@
 
     .edit-profile-container {
         padding: 20px 12px;
+        padding-top: calc(20px + env(safe-area-inset-top));
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
     }
 
     .edit-profile-card {
@@ -297,7 +305,7 @@
     .form-group input {
         padding: 12px;
 
-        font-size: 14px;
+        font-size: 16px; /* keep at 16px even here */
     }
 
     .edit-profile-buttons {
@@ -307,6 +315,29 @@
 
     .edit-profile-buttons button {
         width: 100%;
+    }
+}
+
+
+/* ==========================================================
+   COMMON PHONE WIDTHS (most iPhones + Android)
+   375px – 479px
+========================================================== */
+
+@media (min-width: 375px) and (max-width: 479px) {
+
+    .edit-picture-wrapper {
+        width: 112px;
+        height: 112px;
+    }
+
+    .edit-profile-picture {
+        width: 112px;
+        height: 112px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 26px;
     }
 }
 
@@ -352,7 +383,7 @@
     .form-group input {
         padding: 14px;
 
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .edit-profile-buttons button {
