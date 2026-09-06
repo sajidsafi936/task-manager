@@ -8,8 +8,9 @@ import HomeDashboard from "./pages/HomeDashboard.jsx";
 import AddTask from "./components/AddTask";
 import ProfileScreen from "./pages/ProfileScreen.jsx";
 import EditProfile from "./components/EditProfile";
-import TaskCalendar from "./pages/TaskCalendar.jsx"
-import Progress from "./pages/Progress.jsx"
+import TaskCalendar from "./pages/TaskCalendar.jsx";
+import Progress from "./pages/Progress.jsx";
+import Notifications from "./components/Notifications.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/taskCalendar" element={<TaskCalendar />} />
         <Route path="/progress" element={<Progress />} />
+        <Route path="/notifications" element={<Notifications />} />
       </Routes>
     </>
   );

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 import "./HomeDashboard.css";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
@@ -152,14 +153,16 @@ const HomeDashboard = () => {
         </div>
 
         <div className="notification-profile">
-
-          <IoMdNotificationsOutline
+          <Link to="/notifications">
+            <IoMdNotificationsOutline
             size="2em"
             style={{
               marginBottom: "4px",
               marginRight: "16px",
+              color: "#2f2e2e"
             }}
           />
+          </Link>
 
           <img
             className="header-img"

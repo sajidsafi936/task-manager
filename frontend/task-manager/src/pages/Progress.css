@@ -14,6 +14,11 @@
     flex-direction: column;
     margin: 10px;
     background: #fff;
+
+    /* reserve space for the fixed bottom-nav (75px) so the last
+       card isn't hidden underneath it; extra padding is added
+       for iPhone's home-indicator safe area too */
+    padding-bottom: calc(75px + env(safe-area-inset-bottom));
 }
 
 .top-heading{
@@ -154,6 +159,7 @@
     .progress-container {
         max-width: 700px;
         margin: 20px auto;
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
     }
 
     .top-heading {
