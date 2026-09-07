@@ -163,13 +163,15 @@ const HomeDashboard = () => {
             }}
           />
           </Link>
-
+          
+          <Link to="/profile">
           <img
             className="header-img"
             id="profile-img"
             src={profile}
             alt="profile-img"
-          />
+          />          
+          </Link>
 
         </div>
 
