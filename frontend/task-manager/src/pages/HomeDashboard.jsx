@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./HomeDashboard.css";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
@@ -14,6 +14,7 @@ import profile from "../assets/profile.png";
 const HomeDashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -47,6 +48,11 @@ const HomeDashboard = () => {
 
     fetchTasks();
   }, []);
+
+  // Search tasks
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   // Calculate statistics
   const totalTasks = tasks.length;
@@ -153,24 +159,25 @@ const HomeDashboard = () => {
         </div>
 
         <div className="notification-profile">
+
           <Link to="/notifications">
             <IoMdNotificationsOutline
-            size="2em"
-            style={{
-              marginBottom: "4px",
-              marginRight: "16px",
-              color: "#2f2e2e"
-            }}
-          />
+              size="2em"
+              style={{
+                marginBottom: "4px",
+                marginRight: "16px",
+                color: "#2f2e2e"
+              }}
+            />
           </Link>
-          
+
           <Link to="/profile">
-          <img
-            className="header-img"
-            id="profile-img"
-            src={profile}
-            alt="profile-img"
-          />          
+            <img
+              className="header-img"
+              id="profile-img"
+              src={profile}
+              alt="profile-img"
+            />
           </Link>
 
         </div>
@@ -185,6 +192,8 @@ const HomeDashboard = () => {
         <input
           type="search"
           placeholder="Search tasks..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
 
       </div>
@@ -255,77 +264,86 @@ const HomeDashboard = () => {
 
         <div className="task-list">
 
+          {/* No tasks at all */}
           {tasks.length === 0 && (
             <p>
               No tasks yet. Create one to get started!
             </p>
           )}
 
-          {tasks.map((task) => (
+          {/* No matching tasks */}
+          {tasks.length > 0 && filteredTasks.length === 0 && (
+            <p>
+              No matching tasks found.
+            </p>
+          )}
 
-            <div
-              className="task-card"
-              key={task._id}
-            >
+          {/* Filtered tasks */}
+          {filteredTasks.map((task) => {
+            return (
+              <div
+                className="task-card"
+                key={task._id}
+              >
 
-              {/* Checkbox */}
-              <input
-                type="checkbox"
-                checked={task.status === "completed"}
-                onChange={() => toggleTaskStatus(task)}
-              />
+                {/* Checkbox */}
+                <input
+                  type="checkbox"
+                  checked={task.status === "completed"}
+                  onChange={() => toggleTaskStatus(task)}
+                />
 
-              {/* Task information */}
-              <div className="task-info">
+                {/* Task information */}
+                <div className="task-info">
 
-                <h3>{task.title}</h3>
+                  <h3>{task.title}</h3>
 
-                <p>
-                  {task.dueDate
-                    ? new Date(
-                        task.dueDate
-                      ).toLocaleDateString()
-                    : "No due date"}
+                  <p>
+                    {task.dueDate
+                      ? new Date(
+                          task.dueDate
+                        ).toLocaleDateString()
+                      : "No due date"}
 
-                  {task.dueTime
-                    ? `, ${task.dueTime}`
-                    : ""}
-                </p>
+                    {task.dueTime
+                      ? `, ${task.dueTime}`
+                      : ""}
+                  </p>
 
-              </div>
+                </div>
 
-              {/* Right side */}
-              <div className="task-right">
+                {/* Right side */}
+                <div className="task-right">
 
-                {task.status === "completed" ? (
+                  {task.status === "completed" ? (
 
-                  <button
-                    className="delete-btn"
-                    onClick={() => deleteTask(task._id)}
-                    title="Delete task"
-                  >
-                    <MdDelete />
-                  </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteTask(task._id)}
+                      title="Delete task"
+                    >
+                      <MdDelete />
+                    </button>
 
-                ) : (
+                  ) : (
 
-                  <span
-                    className={`priority-${task.proiority?.toLowerCase()}`}
-                  >
-                    • {task.proiority}
+                    <span
+                      className={`priority-${task.proiority?.toLowerCase()}`}
+                    >
+                      • {task.proiority}
+                    </span>
+
+                  )}
+
+                  <span className="arrow">
+                    <PiGreaterThan />
                   </span>
 
-                )}
-
-                <span className="arrow">
-                  <PiGreaterThan />
-                </span>
+                </div>
 
               </div>
-
-            </div>
-
-          ))}
+            );
+          })}
 
         </div>
 
