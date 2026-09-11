@@ -11,80 +11,149 @@ const EditProfile = () => {
 
   const [username, setUsername] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
-  const [profilePicture, setProfilePicture] = useState(profile);
+
+  // Show saved profile picture if user already has one
+  const [profilePicture, setProfilePicture] = useState(
+    user?.profilePicture || profile
+  );
+
+  // Store the actual selected image file
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const [saving, setSaving] = useState(false);
+
+
+  // ============================
+  // NAME
+  // ============================
 
   const handleChangeName = (e) => {
     setUsername(e.target.value);
   };
 
+
+  // ============================
+  // EMAIL
+  // ============================
+
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
+
+
+  // ============================
+  // PROFILE PICTURE
+  // ============================
 
   const handleChangePicture = (e) => {
     const file = e.target.files[0];
 
     if (file) {
+      // Keep the actual file
+      setSelectedFile(file);
+
+      // Create preview
       const imageUrl = URL.createObjectURL(file);
       setProfilePicture(imageUrl);
     }
   };
 
+
+  // ============================
+  // CANCEL
+  // ============================
+
   const handleCancel = () => {
     navigate("/profile");
   };
 
+
+  // ============================
+  // SAVE PROFILE
+  // ============================
+
   const handleSave = async () => {
     try {
-        const token = localStorage.getItem("token");
+      setSaving(true);
 
-        const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/users/profile`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    name: username,
-                    email: email,
-                }),
-            }
-        );
+      const token = localStorage.getItem("token");
 
-        const data = await res.json();
+      /*
+        If a new picture was selected,
+        we will send the image using FormData.
+      */
 
-        if (!res.ok) {
-            console.error(data.message);
-            return;
+      const formData = new FormData();
+
+      formData.append("name", username);
+      formData.append("email", email);
+
+      if (selectedFile) {
+        formData.append("profilePicture", selectedFile);
+      }
+
+
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/profile`,
+        {
+          method: "PUT",
+
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+
+          body: formData,
         }
+      );
 
-        // Update user information in localStorage
-        localStorage.setItem(
-            "user",
-            JSON.stringify(data.user)
-        );
 
-        // Go back to ProfileScreen
-        navigate("/profile");
+      const data = await res.json();
+
+
+      if (!res.ok) {
+        console.error(data.message);
+        return;
+      }
+
+
+      // Save updated user information
+      localStorage.setItem(
+        "user",
+        JSON.stringify(data.user)
+      );
+
+
+      // Return to profile
+      navigate("/profile");
 
     } catch (err) {
-        console.error(err);
+      console.error(err);
+    } finally {
+      setSaving(false);
     }
-};
+  };
+
 
   return (
     <div className="edit-profile-container">
 
       <div className="edit-profile-card">
 
+        {/* HEADER */}
+
         <div className="edit-profile-header">
+
           <h2>Edit Profile</h2>
-          <p>Update your profile information</p>
+
+          <p>
+            Update your profile information
+          </p>
+
         </div>
 
-        {/* Profile Picture */}
+
+        {/* PROFILE PICTURE */}
+
         <div className="edit-picture-section">
 
           <div className="edit-picture-wrapper">
@@ -112,11 +181,15 @@ const EditProfile = () => {
 
           </div>
 
-          <p>Change profile picture</p>
+          <p>
+            Change profile picture
+          </p>
 
         </div>
 
-        {/* Name */}
+
+        {/* NAME */}
+
         <div className="form-group">
 
           <label htmlFor="username">
@@ -133,7 +206,9 @@ const EditProfile = () => {
 
         </div>
 
-        {/* Email */}
+
+        {/* EMAIL */}
+
         <div className="form-group">
 
           <label htmlFor="email">
@@ -150,12 +225,15 @@ const EditProfile = () => {
 
         </div>
 
-        {/* Buttons */}
+
+        {/* BUTTONS */}
+
         <div className="edit-profile-buttons">
 
           <button
             className="cancel-btn"
             onClick={handleCancel}
+            disabled={saving}
           >
             Cancel
           </button>
@@ -163,8 +241,9 @@ const EditProfile = () => {
           <button
             className="save-btn"
             onClick={handleSave}
+            disabled={saving}
           >
-            Save Changes
+            {saving ? "Saving..." : "Save Changes"}
           </button>
 
         </div>
