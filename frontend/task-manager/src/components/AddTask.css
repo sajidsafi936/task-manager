@@ -37,7 +37,6 @@ body {
 
     gap: 18px;
 
-    background: #f7f7f8;
 }
 
 .left-arrow {
@@ -98,7 +97,7 @@ form {
 }
 
 .title-form label {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 500;
 
     color: #666;
@@ -106,7 +105,7 @@ form {
 
 .title-form input {
     width: 100%;
-    height: 34px;
+    height: 40px;
 
     background: #fff;
 
